@@ -38,7 +38,6 @@
 + (MpinStatus*)RestartRegistration:(const id<IUser>)user;
 + (MpinStatus*)StartRegistration:(const id<IUser>)user userData:(NSString *) userData;
 + (MpinStatus*)RestartRegistration:(const id<IUser>)user userData:(NSString *) userData;
-+ (MpinStatus*) VerifyUser:(const id<IUser>)user mpinId:(NSString* ) mpinId activationKey:(NSString *) activationKey;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user  pushNotificationIdentifier:(NSString *) pushNotificationIdentifier;
 + (MpinStatus*)FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;

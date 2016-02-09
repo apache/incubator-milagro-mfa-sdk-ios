@@ -120,16 +120,10 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
     
 }
+
 + (MpinStatus*)RestartRegistration:(const id<IUser>)user userData:(NSString *) userData {
     [lock lock];
     Status s = mpin.RestartRegistration([((User *) user) getUserPtr], [userData UTF8String]);
-    [lock unlock];
-    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
-}
-
-+ (MpinStatus*) VerifyUser:(const id<IUser>)user mpinId:(NSString* ) mpinId activationKey:(NSString *) activationKey {
-    [lock lock];
-    Status s = mpin.VerifyUser([((User *) user) getUserPtr], [mpinId UTF8String], [activationKey UTF8String]);
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
