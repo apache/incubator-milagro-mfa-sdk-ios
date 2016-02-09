@@ -35,8 +35,10 @@
               deviceName:(const NSString*)devName;
 
 + (MpinStatus*)StartRegistration:(const id<IUser>)user;
-+ (MpinStatus*)RestartRegistration:(const id<IUser>)user;
 + (MpinStatus*)StartRegistration:(const id<IUser>)user userData:(NSString *) userData;
++ (MpinStatus*)StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode;
++ (MpinStatus*)StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode userData:(NSString *) userData;
++ (MpinStatus*)RestartRegistration:(const id<IUser>)user;
 + (MpinStatus*)RestartRegistration:(const id<IUser>)user userData:(NSString *) userData;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user  pushNotificationIdentifier:(NSString *) pushNotificationIdentifier;

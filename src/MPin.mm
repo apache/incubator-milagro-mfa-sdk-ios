@@ -106,19 +106,26 @@ typedef sdk_non_tee::Context Context;
 }
 
 + (MpinStatus*) StartRegistration:(const  id<IUser>) user {
-    return [MPin StartRegistration:user userData:@""];
+    return [MPin StartRegistration:user activateCode:@"" userData:@""];
 }
 
 + (MpinStatus*) RestartRegistration:(const id<IUser>) user {
     return [MPin RestartRegistration:user userData:@""];
 }
 
++ (MpinStatus*)StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode {
+    return [MPin StartRegistration:user activateCode:activateCode userData:@""];
+}
+
 + (MpinStatus*)StartRegistration:(const id<IUser>)user userData:(NSString *) userData {
+    return [MPin StartRegistration:user activateCode:@"" userData:userData];
+}
+
++ (MpinStatus*)StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode userData:(NSString *) userData {
     [lock lock];
-    Status s = mpin.StartRegistration([((User *) user) getUserPtr], [userData UTF8String]);
+    Status s = mpin.StartRegistration([((User *) user) getUserPtr], [activateCode UTF8String], [userData UTF8String]);
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
-    
 }
 
 + (MpinStatus*)RestartRegistration:(const id<IUser>)user userData:(NSString *) userData {
@@ -127,6 +134,7 @@ typedef sdk_non_tee::Context Context;
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
+
 
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user {
     return [MPin ConfirmRegistration:user pushNotificationIdentifier:nil];
