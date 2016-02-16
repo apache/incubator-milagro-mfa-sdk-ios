@@ -1,3 +1,3 @@
 [submodule "mpin-sdk-core"]
 	path = mpin-sdk-core
-	url = http://stash.certivox.com/scm/mm/mpin-sdk-core.git
+	url = ../mpin-sdk-core.git
