@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "73E1B20CF21226571ACC813FEA2DE2FA6C0CF74A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "73E1B20CF21226571ACC813FEA2DE2FA6C0CF74A" : 0,
+    "9980D11FF5B6CE970FF3598FD73DBFED058471FB" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5A00178C-B346-41D7-950B-9AA6A465F541",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "73E1B20CF21226571ACC813FEA2DE2FA6C0CF74A" : "mpin-sdk-ios\/",
+    "9980D11FF5B6CE970FF3598FD73DBFED058471FB" : "mpin-sdk-ios\/mpin-sdk-core\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MPinSDK",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MPinSDK\/MPinSDK.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/tihomir.ganev@stash.certivox.com\/scm\/mm\/mpin-sdk-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "73E1B20CF21226571ACC813FEA2DE2FA6C0CF74A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/tihomir.ganev@stash.certivox.com\/scm\/mm\/mpin-sdk-core.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9980D11FF5B6CE970FF3598FD73DBFED058471FB"
+    }
+  ]
+}
