@@ -20,7 +20,6 @@
 #include "Context.h"
 #include "HTTPConnector.h"
 #include "Storage.h"
-#import "Constants.h"
 #import "User.h"
 
 namespace sdk_non_tee {

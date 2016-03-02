@@ -23,7 +23,6 @@
 #import "Context.h"
 #import <vector>
 #import "User.h"
-#import "Constants.h"
 
 static MPinSDK mpin;
 static BOOL isInitialized = false;

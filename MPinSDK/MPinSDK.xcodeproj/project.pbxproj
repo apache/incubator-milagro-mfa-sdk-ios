@@ -15,7 +15,6 @@
 		FE991F0A1C5F66540014F23E /* OTP.m in Sources */ = {isa = PBXBuildFile; fileRef = FE991F011C5F66540014F23E /* OTP.m */; };
 		FE991F0B1C5F66540014F23E /* Storage.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991F031C5F66540014F23E /* Storage.mm */; };
 		FE991F0C1C5F66540014F23E /* User.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991F051C5F66540014F23E /* User.mm */; };
-		FEBBC18A1C5F88F80011001A /* Constants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FE991EF41C5F66540014F23E /* Constants.h */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FEBBC18B1C5F88F80011001A /* IUser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FE991EFB1C5F66540014F23E /* IUser.h */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FEBBC18C1C5F88F80011001A /* MPin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FE991EFC1C5F66540014F23E /* MPin.h */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FEBBC18D1C5F88F80011001A /* OTP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FE991F001C5F66540014F23E /* OTP.h */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -52,7 +51,6 @@
 			dstSubfolderSpec = 16;
 			files = (
 				FEBBC18E1C5F89100011001A /* MpinStatus.h in CopyFiles */,
-				FEBBC18A1C5F88F80011001A /* Constants.h in CopyFiles */,
 				FEBBC18B1C5F88F80011001A /* IUser.h in CopyFiles */,
 				FEBBC18C1C5F88F80011001A /* MPin.h in CopyFiles */,
 				FEBBC18D1C5F88F80011001A /* OTP.h in CopyFiles */,
@@ -66,7 +64,6 @@
 		FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FE49FF9F1A1A3C2D000030A4 /* MPinSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPinSDK-Prefix.pch"; sourceTree = "<group>"; };
 		FE49FFAC1A1A3C2D000030A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		FE991EF41C5F66540014F23E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../../src/Constants.h; sourceTree = "<group>"; };
 		FE991EF51C5F66540014F23E /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Context.h; path = ../../src/Context.h; sourceTree = "<group>"; };
 		FE991EF61C5F66540014F23E /* Context.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Context.mm; path = ../../src/Context.mm; sourceTree = "<group>"; };
 		FE991EF71C5F66540014F23E /* def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = def.h; path = ../../src/def.h; sourceTree = "<group>"; };
@@ -172,7 +169,6 @@
 			isa = PBXGroup;
 			children = (
 				FED0EDD71C68C965001AB531 /* core */,
-				FE991EF41C5F66540014F23E /* Constants.h */,
 				FE991EF51C5F66540014F23E /* Context.h */,
 				FE991EF61C5F66540014F23E /* Context.mm */,
 				FE991EF71C5F66540014F23E /* def.h */,
