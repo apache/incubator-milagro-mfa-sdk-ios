@@ -10,6 +10,7 @@
 ### Building the M-Pin Mobile SDK
 
 1. Navigate to `<mpin-sdk-ios>`
-2. Open `MPinSDK.xcodeproj`
-3. Select *Product->Build* from the Xcode menu
+2. Open `MPinSDK/MPinSDK.xcodeproj`
+3. Select *Product->Build* from the Xcode menu.
+
 For further details, see [M-Pin Mobile SDK for iOS Online Help](http://docs.miracl.com/m-pin-mobile-sdk-for-ios) 
