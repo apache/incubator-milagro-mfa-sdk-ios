@@ -248,4 +248,26 @@ typedef sdk_non_tee::Context Context;
     return nil;
 }
 
++ (NSMutableArray*) listUsers:( NSString *) backendURL {
+    if (backendURL == nil || backendURL.length == 0 ) return nil;
+    
+    NSMutableArray * users = [NSMutableArray array];
+    std::vector<UserPtr> vUsers;
+    mpin.ListUsers(vUsers, [backendURL UTF8String]);
+    for (int i = 0; i<vUsers.size(); i++) {
+        [users addObject:[[User alloc] initWith:vUsers[i]]];
+    }
+    return users;
+}
+
++ (NSMutableArray*) listBackends {
+    NSMutableArray * backends = [NSMutableArray array];
+    std::vector<String> vBackends;
+    mpin.ListBackends(vBackends);
+    for (int i = 0; i<vBackends.size(); i++) {
+        [backends addObject:[NSString stringWithUTF8String:vBackends[i].c_str()]];
+    }
+    return backends;
+}
+
 @end

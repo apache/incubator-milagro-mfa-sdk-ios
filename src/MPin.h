@@ -55,6 +55,9 @@
 + (Boolean)CanLogout:(const id<IUser>)user;
 
 + (NSMutableArray*)listUsers;
++ (NSMutableArray*) listUsers:( NSString *) backendURL;
++ (NSMutableArray*) listBackends;
+
 + ( id<IUser> ) getIUserById:(NSString *) userId;
 + (void) DeleteUser:(const id<IUser>)user;
 
