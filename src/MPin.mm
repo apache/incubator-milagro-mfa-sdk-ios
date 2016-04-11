@@ -158,7 +158,14 @@ typedef sdk_non_tee::Context Context;
     [lock lock];
     Status s = mpin.StartAuthentication([((User *) user) getUserPtr]);
     [lock unlock];
-    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];;
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
++ (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode {
+    [lock lock];
+    Status s = mpin.StartAuthentication([((User *) user) getUserPtr], [accessCode UTF8String]);
+    [lock unlock];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
 + (MpinStatus*) CheckAccessNumber:(NSString *)an {
@@ -233,6 +240,13 @@ typedef sdk_non_tee::Context Context;
         [users addObject:[[User alloc] initWith:vUsers[i]]];
     }
     return users;
+}
+
++ (NSString *) getPrerollUserId:(NSString *) accessCode {
+    [lock lock];
+    String value = mpin.GetPrerollUserId([accessCode UTF8String]);
+    [lock unlock];
+    return [NSString stringWithUTF8String:value.c_str()];
 }
 
 + ( id<IUser> ) getIUserById:(NSString *) userId {

@@ -45,6 +45,7 @@
 + (MpinStatus*)FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;
 
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user;
++ (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
 + (MpinStatus*) CheckAccessNumber:(NSString *)an;
 + (MpinStatus*)FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin;
 + (MpinStatus*)FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authResultData:(NSString **)authResultData;
@@ -57,6 +58,7 @@
 + (NSMutableArray*)listUsers;
 + (NSMutableArray*) listUsers:( NSString *) backendURL;
 + (NSMutableArray*) listBackends;
++ (NSString *) getPrerollUserId:(NSString *) accessCode;
 
 + ( id<IUser> ) getIUserById:(NSString *) userId;
 + (void) DeleteUser:(const id<IUser>)user;
