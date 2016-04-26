@@ -21,6 +21,7 @@
 #import "IUser.h"
 #import "MpinStatus.h"
 #import "OTP.h"
+#import "SessionDetails.h"
 
 @interface MPin : NSObject
 
@@ -58,7 +59,7 @@
 + (NSMutableArray*)listUsers;
 + (NSMutableArray*) listUsers:( NSString *) backendURL;
 + (NSMutableArray*) listBackends;
-+ (NSString *) getPrerollUserId:(NSString *) accessCode;
++ (SessionDetails *) GetSessionDetails:(NSString *) accessCode;
 
 + ( id<IUser> ) getIUserById:(NSString *) userId;
 + (void) DeleteUser:(const id<IUser>)user;

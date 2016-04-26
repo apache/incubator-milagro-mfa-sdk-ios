@@ -98,12 +98,6 @@ typedef sdk_non_tee::Context Context;
     return [[User alloc] initWith:userPtr];
 }
 
-+(void) DeleteUser:(const id<IUser>) user {
-    [lock lock];
-    mpin.DeleteUser([((User *) user) getUserPtr]);
-    [lock unlock];
-}
-
 + (MpinStatus*) StartRegistration:(const  id<IUser>) user {
     return [MPin StartRegistration:user activateCode:@"" userData:@""];
 }
@@ -242,11 +236,18 @@ typedef sdk_non_tee::Context Context;
     return users;
 }
 
-+ (NSString *) getPrerollUserId:(NSString *) accessCode {
++ (SessionDetails *) GetSessionDetails:(NSString *) accessCode {
     [lock lock];
-    String value = mpin.GetPrerollUserId([accessCode UTF8String]);
+    MPinSDK::SessionDetails sd;
+    Status s = mpin.GetSessionDetails([accessCode UTF8String] , sd);
     [lock unlock];
-    return [NSString stringWithUTF8String:value.c_str()];
+    
+    if (s.GetStatusCode() != Status::Code::OK)
+        return nil;
+
+    return  [[SessionDetails alloc] initWith:[NSString stringWithUTF8String:sd.prerollId.c_str()]
+                                      appName:[NSString stringWithUTF8String:sd.appName.c_str()]
+                                   appIconUrl:[NSString stringWithUTF8String:sd.appIconUrl.c_str()]];
 }
 
 + ( id<IUser> ) getIUserById:(NSString *) userId {
@@ -282,6 +283,12 @@ typedef sdk_non_tee::Context Context;
         [backends addObject:[NSString stringWithUTF8String:vBackends[i].c_str()]];
     }
     return backends;
+}
+
++ (void) DeleteUser:(const id<IUser>) user {
+    [lock lock];
+    mpin.DeleteUser([((User *) user) getUserPtr]);
+    [lock unlock];
 }
 
 @end
