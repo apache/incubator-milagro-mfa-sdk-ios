@@ -19,6 +19,7 @@
 
 #include "HTTPConnector.h"
 #import "MPin.h"
+#import <UIKit/UIKit.h>
 
 static NSInteger constIntTimeoutInterval = 30;
 static NSString *constStrConnectionTimeoutNotification = @"ConnectionTimeoutNotification";
@@ -100,6 +101,17 @@ namespace net {
         }
         
         [request addValue:@"ios" forHTTPHeaderField:@"X-MIRACL-OS-Class"];
+        
+        NSDictionary *dictInfo = [[NSBundle mainBundle] infoDictionary];
+        NSString *strBundleID       = dictInfo[@"CFBundleIdentifier"];
+        NSString *strAppVersion     = dictInfo[@"CFBundleShortVersionString"];
+        NSString *strOSVersion      = [[UIDevice currentDevice] systemVersion];
+        NSString *strBuildNumber    = dictInfo[@"CFBundleVersion"];
+        
+        NSString *strUserAgent = [NSString stringWithFormat:@"%@/%@ (ios/%@) build/%@",strBundleID,strAppVersion,strOSVersion, strBuildNumber];
+        
+        [request setValue:strUserAgent forHTTPHeaderField:@"User-Agent"];
+
         
         if(!m_bodyData.empty()) {
             request.HTTPBody =  [[NSString stringWithUTF8String:m_bodyData.c_str()] dataUsingEncoding:NSUTF8StringEncoding];
