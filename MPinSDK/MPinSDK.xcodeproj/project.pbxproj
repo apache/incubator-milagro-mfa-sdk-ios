@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE49FF9C1A1A3C2D000030A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */; };
-		FE7C75FC1CCF8D5B003AEB27 /* SessionDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7C75FB1CCF8D5B003AEB27 /* SessionDetails.m */; };
+		FE7A4AD71D8D72D600E732B4 /* SessionDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A4AD61D8D72D600E732B4 /* SessionDetails.m */; };
 		FE991F061C5F66540014F23E /* Context.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991EF61C5F66540014F23E /* Context.mm */; };
 		FE991F071C5F66540014F23E /* HTTPConnector.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991EFA1C5F66540014F23E /* HTTPConnector.mm */; };
 		FE991F081C5F66540014F23E /* MPin.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991EFD1C5F66540014F23E /* MPin.mm */; };
@@ -65,8 +65,8 @@
 		FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FE49FF9F1A1A3C2D000030A4 /* MPinSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPinSDK-Prefix.pch"; sourceTree = "<group>"; };
 		FE49FFAC1A1A3C2D000030A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		FE7C75FA1CCF8D5B003AEB27 /* SessionDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionDetails.h; sourceTree = "<group>"; };
-		FE7C75FB1CCF8D5B003AEB27 /* SessionDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionDetails.m; sourceTree = "<group>"; };
+		FE7A4AD51D8D72D600E732B4 /* SessionDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionDetails.h; path = ../../src/SessionDetails.h; sourceTree = "<group>"; };
+		FE7A4AD61D8D72D600E732B4 /* SessionDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionDetails.m; path = ../../src/SessionDetails.m; sourceTree = "<group>"; };
 		FE991EF51C5F66540014F23E /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Context.h; path = ../../src/Context.h; sourceTree = "<group>"; };
 		FE991EF61C5F66540014F23E /* Context.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Context.mm; path = ../../src/Context.mm; sourceTree = "<group>"; };
 		FE991EF71C5F66540014F23E /* def.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = def.h; path = ../../src/def.h; sourceTree = "<group>"; };
@@ -181,10 +181,10 @@
 				FE991EFB1C5F66540014F23E /* IUser.h */,
 				FE991EFC1C5F66540014F23E /* MPin.h */,
 				FE991EFD1C5F66540014F23E /* MPin.mm */,
-				FE7C75FA1CCF8D5B003AEB27 /* SessionDetails.h */,
-				FE7C75FB1CCF8D5B003AEB27 /* SessionDetails.m */,
 				FE991EFE1C5F66540014F23E /* MpinStatus.h */,
 				FE991EFF1C5F66540014F23E /* MpinStatus.m */,
+				FE7A4AD51D8D72D600E732B4 /* SessionDetails.h */,
+				FE7A4AD61D8D72D600E732B4 /* SessionDetails.m */,
 				FE991F001C5F66540014F23E /* OTP.h */,
 				FE991F011C5F66540014F23E /* OTP.m */,
 				FE991F021C5F66540014F23E /* Storage.h */,
@@ -342,7 +342,7 @@
 				FE991F0A1C5F66540014F23E /* OTP.m in Sources */,
 				FE991F071C5F66540014F23E /* HTTPConnector.mm in Sources */,
 				FED0EE121C68C984001AB531 /* pair.c in Sources */,
-				FE7C75FC1CCF8D5B003AEB27 /* SessionDetails.m in Sources */,
+				FE7A4AD71D8D72D600E732B4 /* SessionDetails.m in Sources */,
 				FED0EE131C68C984001AB531 /* rand.c in Sources */,
 				FED0EE061C68C984001AB531 /* big.c in Sources */,
 				FED0EE141C68C984001AB531 /* rom.c in Sources */,
