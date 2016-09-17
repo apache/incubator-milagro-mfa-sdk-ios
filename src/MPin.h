@@ -25,38 +25,38 @@
 
 @interface MPin : NSObject
 
-+ (void)initSDK;
-+ (MpinStatus*)TestBackend:(const NSString*)url;
-+ (MpinStatus*)SetBackend:(const NSString*)url;
-+ (MpinStatus*)TestBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
-+ (MpinStatus*)SetBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
++ (void) initSDK;
++ (MpinStatus*) TestBackend:(const NSString*)url;
++ (MpinStatus*) SetBackend:(const NSString*)url;
++ (MpinStatus*) TestBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
++ (MpinStatus*) SetBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
 
-+ (id<IUser>)MakeNewUser:(const NSString*)identity;
-+ (id<IUser>)MakeNewUser:(const NSString*)identity
++ (id<IUser>) MakeNewUser:(const NSString*)identity;
++ (id<IUser>) MakeNewUser:(const NSString*)identity
               deviceName:(const NSString*)devName;
 
-+ (MpinStatus*)StartRegistration:(const id<IUser>)user;
-+ (MpinStatus*)StartRegistration:(const id<IUser>)user userData:(NSString *) userData;
-+ (MpinStatus*)StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode;
-+ (MpinStatus*)StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode userData:(NSString *) userData;
-+ (MpinStatus*)RestartRegistration:(const id<IUser>)user;
-+ (MpinStatus*)RestartRegistration:(const id<IUser>)user userData:(NSString *) userData;
++ (MpinStatus*) StartRegistration:(const id<IUser>)user;
++ (MpinStatus*) StartRegistration:(const id<IUser>)user userData:(NSString *) userData;
++ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode;
++ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode userData:(NSString *) userData;
++ (MpinStatus*) RestartRegistration:(const id<IUser>)user;
++ (MpinStatus*) RestartRegistration:(const id<IUser>)user userData:(NSString *) userData;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user  pushNotificationIdentifier:(NSString *) pushNotificationIdentifier;
-+ (MpinStatus*)FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;
++ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;
 
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user;
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
 + (MpinStatus*) CheckAccessNumber:(NSString *)an;
-+ (MpinStatus*)FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin;
-+ (MpinStatus*)FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authResultData:(NSString **)authResultData;
-+ (MpinStatus*)FinishAuthenticationOTP:(id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp;
-+ (MpinStatus*)FinishAuthenticationAN:(id<IUser>)user pin:(NSString *) pin accessNumber:(NSString *)an;
++ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin;
++ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authResultData:(NSString **)authResultData;
++ (MpinStatus*) FinishAuthenticationOTP:(id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp;
++ (MpinStatus*) FinishAuthenticationAN:(id<IUser>)user pin:(NSString *) pin accessNumber:(NSString *)an;
 
-+ (Boolean)Logout:(const id<IUser>)user;
-+ (Boolean)CanLogout:(const id<IUser>)user;
++ (Boolean) Logout:(const id<IUser>)user;
++ (Boolean) CanLogout:(const id<IUser>)user;
 
-+ (NSMutableArray*)listUsers;
++ (NSMutableArray*) listUsers;
 + (NSMutableArray*) listUsers:( NSString *) backendURL;
 + (NSMutableArray*) listBackends;
 + (SessionDetails *) GetSessionDetails:(NSString *) accessCode;
@@ -67,6 +67,6 @@
 + (NSString *) GetClientParam:(const NSString *) key;
 
 /// TEMPORARY FIX
-+ (NSString*)getRPSUrl;
++ (NSString*) getRPSUrl;
 
 @end

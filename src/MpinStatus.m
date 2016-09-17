@@ -79,6 +79,12 @@
         case HTTP_REQUEST_ERROR:
             result = @"HTTP_REQUEST_ERROR";
             break;
+        case BAD_USER_AGENT:
+            result = @"BAD_USER_AGENT";
+            break;
+        case CLIENT_SECRET_EXPIRED:
+            result = @"CLIENT_SECRET_EXPIRED";
+            break;
         default:
             break;
     }
