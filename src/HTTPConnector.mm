@@ -94,14 +94,30 @@ namespace net {
 
         [request setTimeoutInterval:constIntTimeoutInterval];
         
-        if(!m_requestHeaders.empty()) {
-            for (StringMap::const_iterator it=m_requestHeaders.begin(); it!=m_requestHeaders.end(); ++it) {
-                [request addValue:[NSString stringWithUTF8String:it->second.c_str()] forHTTPHeaderField:[NSString stringWithUTF8String:it->first.c_str()]];
+        NSDictionary *dictionary = [request allHTTPHeaderFields];
+        
+        if(!m_requestHeaders.empty())
+        {
+            for (StringMap::const_iterator it=m_requestHeaders.begin(); it!=m_requestHeaders.end(); ++it)
+            {
+                NSString *strValue = [NSString stringWithUTF8String:it->second.c_str()];
+                NSString *strKey   = [NSString stringWithUTF8String:it->first.c_str()];
+                
+                if ([[dictionary allKeys] containsObject:strKey])
+                {
+                    [request setValue:strValue forHTTPHeaderField:strKey];
+                }
+                else
+                {
+                    [request addValue:strValue forHTTPHeaderField:strKey];
+                }
             }
         }
         
         [request addValue:@"ios" forHTTPHeaderField:@"X-MIRACL-OS-Class"];
         
+        /*
+        // Deprecated Code Starting Here
         NSDictionary *dictInfo = [[NSBundle mainBundle] infoDictionary];
         NSString *strBundleID       = dictInfo[@"CFBundleIdentifier"];
         NSString *strAppVersion     = dictInfo[@"CFBundleShortVersionString"];
@@ -111,7 +127,8 @@ namespace net {
         NSString *strUserAgent = [NSString stringWithFormat:@"%@/%@ (ios/%@) build/%@",strBundleID,strAppVersion,strOSVersion, strBuildNumber];
         
         [request setValue:strUserAgent forHTTPHeaderField:@"User-Agent"];
-
+        // Deprecated Code Ends Here
+         */
         
         if(!m_bodyData.empty()) {
             request.HTTPBody =  [[NSString stringWithUTF8String:m_bodyData.c_str()] dataUsingEncoding:NSUTF8StringEncoding];

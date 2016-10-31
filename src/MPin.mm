@@ -51,6 +51,24 @@ typedef sdk_non_tee::Context Context;
     isInitialized = true;
 }
 
++ (void) initSDKWithUserAgent:(NSDictionary *)dictHeaders{
+    
+    if (isInitialized) return;
+
+    StringMap sm;
+    StringMap sm_CustomHeaders;
+    
+    for( id headerName in dictHeaders)
+    {
+        sm_CustomHeaders.Put( [headerName UTF8String], [dictHeaders[headerName] UTF8String] );
+    }
+    
+    [lock lock];
+    mpin.Init(sm, sdk_non_tee::Context::Instance(), sm_CustomHeaders);
+    [lock unlock];
+    isInitialized = true;
+}
+
 +(MpinStatus *) TestBackend:(const NSString * ) url {
     [lock lock];
     Status s = mpin.TestBackend((url == nil)?(""):([url UTF8String]));
