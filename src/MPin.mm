@@ -51,7 +51,7 @@ typedef sdk_non_tee::Context Context;
     isInitialized = true;
 }
 
-+ (void) initSDKWithUserAgent:(NSDictionary *)dictHeaders{
++ (void) initSDKWithHeaders:(NSDictionary *)dictHeaders{
     
     if (isInitialized) return;
 

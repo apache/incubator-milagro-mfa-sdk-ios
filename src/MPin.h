@@ -26,7 +26,7 @@
 @interface MPin : NSObject
 
 + (void) initSDK;
-+ (void) initSDKWithUserAgent:(NSDictionary *)dictHeaders;
++ (void) initSDKWithHeaders:(NSDictionary *)dictHeaders;
 + (MpinStatus*) TestBackend:(const NSString*)url;
 + (MpinStatus*) SetBackend:(const NSString*)url;
 + (MpinStatus*) TestBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
