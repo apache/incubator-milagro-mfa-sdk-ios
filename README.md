@@ -54,6 +54,10 @@ typedef NS_ENUM(NSInteger, MPinStatus) {
 ##### `(void) initSDK;`
 This method constructs/initializes the SDK object.
 
+##### `(void) initSDKWithHeaders: (NSDictionary*) dictHeaders;`
+This method constructs/initializes the SDK object.
+The `dictHeaders` parameter allows the caller to pass additional dictionary of custom headers, which will be added to any HTTP request that the SDK executes.
+
 **Note that after this initialization the SDK will not be ready for usage until `SetBackend` is called with a valid _Server URL_.**
 
 ##### `(MpinStatus*) TestBackend: (const NSString*) url;`
