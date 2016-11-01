@@ -43,11 +43,13 @@ typedef sdk_non_tee::Context Context;
 }
 
 +(void) initSDK {
+    
     if (isInitialized) return;
-    StringMap sm;
+    
     [lock lock];
-    mpin.Init(sm, sdk_non_tee::Context::Instance());
+    mpin.Init(StringMap(), sdk_non_tee::Context::Instance());
     [lock unlock];
+    
     isInitialized = true;
 }
 
@@ -55,7 +57,6 @@ typedef sdk_non_tee::Context Context;
     
     if (isInitialized) return;
 
-    StringMap sm;
     StringMap sm_CustomHeaders;
     
     for( id headerName in dictHeaders)
@@ -64,8 +65,9 @@ typedef sdk_non_tee::Context Context;
     }
     
     [lock lock];
-    mpin.Init(sm, sdk_non_tee::Context::Instance(), sm_CustomHeaders);
+    mpin.Init(StringMap(), sdk_non_tee::Context::Instance(), sm_CustomHeaders);
     [lock unlock];
+    
     isInitialized = true;
 }
 
