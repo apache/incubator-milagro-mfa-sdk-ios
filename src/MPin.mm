@@ -43,11 +43,31 @@ typedef sdk_non_tee::Context Context;
 }
 
 +(void) initSDK {
+    
     if (isInitialized) return;
-    StringMap sm;
+    
     [lock lock];
-    mpin.Init(sm, sdk_non_tee::Context::Instance());
+    mpin.Init(StringMap(), sdk_non_tee::Context::Instance());
     [lock unlock];
+    
+    isInitialized = true;
+}
+
++ (void) initSDKWithHeaders:(NSDictionary *)dictHeaders{
+    
+    if (isInitialized) return;
+
+    StringMap sm_CustomHeaders;
+    
+    for( id headerName in dictHeaders)
+    {
+        sm_CustomHeaders.Put( [headerName UTF8String], [dictHeaders[headerName] UTF8String] );
+    }
+    
+    [lock lock];
+    mpin.Init(StringMap(), sdk_non_tee::Context::Instance(), sm_CustomHeaders);
+    [lock unlock];
+    
     isInitialized = true;
 }
 
