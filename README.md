@@ -60,6 +60,9 @@ The `dictHeaders` parameter allows the caller to pass additional dictionary of c
 
 **Note that after this initialization the SDK will not be ready for usage until `SetBackend` is called with a valid _Server URL_.**
 
+##### `(void) Destroy;`
+This method clears the SDK object so it can be re-initialized again, possibly with different parameters.
+
 ##### `(MpinStatus*) TestBackend: (const NSString*) url;`
 ##### `(MpinStatus*) TestBackend: (const NSString*) url rpsPrefix: (const NSString*) rpsPrefix;`
 This method will test whether `url` is a valid back-end URL by trying to retrieve Client Settings from it.

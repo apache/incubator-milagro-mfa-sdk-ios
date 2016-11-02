@@ -27,6 +27,7 @@
 
 + (void) initSDK;
 + (void) initSDKWithHeaders:(NSDictionary *)dictHeaders;
++ (void) Destroy;
 + (MpinStatus*) TestBackend:(const NSString*)url;
 + (MpinStatus*) SetBackend:(const NSString*)url;
 + (MpinStatus*) TestBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
@@ -60,9 +61,9 @@
 + (NSMutableArray*) listUsers;
 + (NSMutableArray*) listUsers:( NSString *) backendURL;
 + (NSMutableArray*) listBackends;
-+ (SessionDetails *) GetSessionDetails:(NSString *) accessCode;
++ (SessionDetails*) GetSessionDetails:(NSString *) accessCode;
 
-+ ( id<IUser> ) getIUserById:(NSString *) userId;
++ (id<IUser>) getIUserById:(NSString *) userId;
 + (void) DeleteUser:(const id<IUser>)user;
 
 + (NSString *) GetClientParam:(const NSString *) key;
