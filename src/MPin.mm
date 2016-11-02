@@ -48,9 +48,9 @@ typedef sdk_non_tee::Context Context;
     
     [lock lock];
     mpin.Init(StringMap(), sdk_non_tee::Context::Instance());
-    [lock unlock];
-    
     isInitialized = true;
+    [lock unlock];
+
 }
 
 + (void) initSDKWithHeaders:(NSDictionary *)dictHeaders{
@@ -66,14 +66,15 @@ typedef sdk_non_tee::Context Context;
     
     [lock lock];
     mpin.Init(StringMap(), sdk_non_tee::Context::Instance(), sm_CustomHeaders);
-    [lock unlock];
-    
     isInitialized = true;
+    [lock unlock];
 }
 
 + (void) Destroy {
+    [lock lock];
     mpin.Destroy();
     isInitialized = false;
+    [lock unlock];
 }
 
 + (MpinStatus*) TestBackend:(const NSString * ) url {
