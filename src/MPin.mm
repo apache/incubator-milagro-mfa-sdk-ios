@@ -38,11 +38,11 @@ typedef sdk_non_tee::Context Context;
 @implementation MPin
 
 /// TEMPORARY FIX
-+(NSString * ) getRPSUrl {
++ (NSString*) getRPSUrl {
     return rpsURL;
 }
 
-+(void) initSDK {
++ (void) initSDK {
     
     if (isInitialized) return;
     
@@ -71,21 +71,26 @@ typedef sdk_non_tee::Context Context;
     isInitialized = true;
 }
 
-+(MpinStatus *) TestBackend:(const NSString * ) url {
++ (void) Destroy {
+    mpin.Destroy();
+    isInitialized = false;
+}
+
++ (MpinStatus*) TestBackend:(const NSString * ) url {
     [lock lock];
     Status s = mpin.TestBackend((url == nil)?(""):([url UTF8String]));
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+(MpinStatus *) SetBackend:(const NSString * ) url {
++ (MpinStatus*) SetBackend:(const NSString * ) url {
     [lock lock];
     Status s = mpin.SetBackend((url == nil)?(""):([url UTF8String]));
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+(MpinStatus *) TestBackend:(const NSString * ) url rpsPrefix:(NSString *) rpsPrefix {
++ (MpinStatus*) TestBackend:(const NSString * ) url rpsPrefix:(NSString *) rpsPrefix {
     if (rpsPrefix == nil || rpsPrefix.length == 0) {
         return [MPin TestBackend:url];
     }
@@ -94,7 +99,7 @@ typedef sdk_non_tee::Context Context;
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
-+(MpinStatus *) SetBackend:(const NSString * ) url rpsPrefix:(NSString *) rpsPrefix {
++ (MpinStatus*) SetBackend:(const NSString * ) url rpsPrefix:(NSString *) rpsPrefix {
     if (rpsPrefix == nil || rpsPrefix.length == 0) {
         return [MPin SetBackend:url];
     }
@@ -126,22 +131,22 @@ typedef sdk_non_tee::Context Context;
     return [MPin RestartRegistration:user userData:@""];
 }
 
-+ (MpinStatus*)StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode {
++ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode {
     return [MPin StartRegistration:user activateCode:activateCode userData:@""];
 }
 
-+ (MpinStatus*)StartRegistration:(const id<IUser>)user userData:(NSString *) userData {
++ (MpinStatus*) StartRegistration:(const id<IUser>)user userData:(NSString *) userData {
     return [MPin StartRegistration:user activateCode:@"" userData:userData];
 }
 
-+ (MpinStatus*)StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode userData:(NSString *) userData {
++ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode userData:(NSString *) userData {
     [lock lock];
     Status s = mpin.StartRegistration([((User *) user) getUserPtr], [activateCode UTF8String], [userData UTF8String]);
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus*)RestartRegistration:(const id<IUser>)user userData:(NSString *) userData {
++ (MpinStatus*) RestartRegistration:(const id<IUser>)user userData:(NSString *) userData {
     [lock lock];
     Status s = mpin.RestartRegistration([((User *) user) getUserPtr], [userData UTF8String]);
     [lock unlock];
@@ -161,7 +166,7 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus*)FinishRegistration:(const id<IUser>)user pin:(NSString *) pin {
++ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin:(NSString *) pin {
     [lock lock];
     Status s = mpin.FinishRegistration([((User *) user) getUserPtr], [pin UTF8String]);
     [lock unlock];
@@ -239,14 +244,14 @@ typedef sdk_non_tee::Context Context;
     return b;
 }
 
-+(NSString *) GetClientParam:(const NSString *) key {
++(NSString*) GetClientParam:(const NSString *) key {
     [lock lock];
     String value = mpin.GetClientParam([key UTF8String]);
     [lock unlock];
     return [NSString stringWithUTF8String:value.c_str()];
 }
 
-+(NSMutableArray *) listUsers {
++(NSMutableArray*) listUsers {
     NSMutableArray * users = [NSMutableArray array];
     std::vector<UserPtr> vUsers;
     mpin.ListUsers(vUsers);
@@ -256,7 +261,7 @@ typedef sdk_non_tee::Context Context;
     return users;
 }
 
-+ (SessionDetails *) GetSessionDetails:(NSString *) accessCode {
++ (SessionDetails*) GetSessionDetails:(NSString *) accessCode {
     [lock lock];
     MPinSDK::SessionDetails sd;
     Status s = mpin.GetSessionDetails([accessCode UTF8String] , sd);
@@ -270,7 +275,7 @@ typedef sdk_non_tee::Context Context;
                                    appIconUrl:[NSString stringWithUTF8String:sd.appIconUrl.c_str()]];
 }
 
-+ ( id<IUser> ) getIUserById:(NSString *) userId {
++ (id<IUser>) getIUserById:(NSString *) userId {
     if( userId == nil ) return nil;
     if ([@"" isEqualToString:userId]) return nil;
     
