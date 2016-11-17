@@ -63,6 +63,11 @@ The `dictHeaders` parameter allows the caller to pass additional dictionary of c
 ##### `(void) Destroy;`
 This method clears the SDK object so it can be re-initialized again, possibly with different parameters.
 
+##### `(void) SetClientId: (NSString *) clientId;`
+This method will set a specific _Client ID_ which the SDK should use when sending requests to the backend.
+As an example, the MIRACL MFA Platform issues _Client IDs_ for registered applications, which use the platform for authenticating users.
+When the SDK is used to authenticate users specifically for this registered application, the _Client ID_ should be set by the app using this method. 
+
 ##### `(MpinStatus*) TestBackend: (const NSString*) url;`
 ##### `(MpinStatus*) TestBackend: (const NSString*) url rpsPrefix: (const NSString*) rpsPrefix;`
 This method will test whether `url` is a valid back-end URL by trying to retrieve Client Settings from it.
@@ -232,6 +237,13 @@ After this authentication, the end-user can log into the PC/Browser which provid
 * `OK` - Successful authentication.
 * `INCORRECT_PIN` - The authentication failed because of incorrect PIN. After the 3rd (configurable in the RPS) unsuccessful authentication attempt, the method will still return `INCORRECT_PIN` but the User State will be set to `BLOCKED`.
 * `INCORRECT_ACCESS_NUMBER` - The authentication failed because of incorrect Access Number. 
+
+##### `(MpinStatus*) FinishAuthenticationMFA: (id<IUser>)user pin: (NSString *) pin authzCode: (NSString **) authzCode;`
+This method is almost identical to the standard `FinishAuthentication`, but it returns back an _Authorization Code_, which should be used further by the app back-end to validate the authenticated user.
+This method is useful when authenticating users against the MIRACL MFA Platform.
+For this flow to work, the app should also set a _Client ID_ through the `SetClientId` method.
+The Platform will provide the _Authorization Code_ as a result from the authentication.
+This code should be then passed by the app to the back-end, where it should be verified using one of the MFA Paltform SDK flavors.
 
 ##### `(Boolean) CanLogout: (const id<IUser>) user;`
 This method is used after authentication with an Access Number/Code through `FinishAuthenticationAN`.
