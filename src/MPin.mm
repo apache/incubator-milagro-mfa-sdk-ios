@@ -231,14 +231,29 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (Boolean) Logout:(const  id<IUser>) user {
++ (void) SetClientId:(NSString *) clientId {
+    [lock lock];
+    mpin.SetClientId([clientId UTF8String]);
+    [lock unlock];
+}
+
++ (MpinStatus*) FinishAuthenticationMFA:(id<IUser>)user pin:(NSString *) pin authzCode:(NSString **) authzCode {
+    MPinSDK::String c_authzCode;
+    [lock lock];
+    Status s = mpin.FinishAuthenticationMFA( [((User *) user) getUserPtr], [pin UTF8String], c_authzCode);
+    [lock unlock];
+    *authzCode = [NSString stringWithUTF8String:c_authzCode.c_str()];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
++ (Boolean) Logout:(const id<IUser>) user {
     [lock lock];
     Boolean b = mpin.Logout([((User *) user) getUserPtr]);
     [lock unlock];
     return b;
 }
 
-+ (Boolean) CanLogout:(const  id<IUser>) user {
++ (Boolean) CanLogout:(const id<IUser>) user {
     [lock lock];
     Boolean b = mpin.CanLogout([((User *) user) getUserPtr]);
     [lock unlock];
