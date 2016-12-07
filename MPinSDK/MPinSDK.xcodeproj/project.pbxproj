@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE49FF9C1A1A3C2D000030A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */; };
+		FE55B5431DF839E600D3D69F /* ServiceDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FE55B5421DF839E600D3D69F /* ServiceDetails.m */; };
 		FE7A4AD71D8D72D600E732B4 /* SessionDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A4AD61D8D72D600E732B4 /* SessionDetails.m */; };
 		FE991F061C5F66540014F23E /* Context.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991EF61C5F66540014F23E /* Context.mm */; };
 		FE991F071C5F66540014F23E /* HTTPConnector.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991EFA1C5F66540014F23E /* HTTPConnector.mm */; };
@@ -65,6 +66,8 @@
 		FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FE49FF9F1A1A3C2D000030A4 /* MPinSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPinSDK-Prefix.pch"; sourceTree = "<group>"; };
 		FE49FFAC1A1A3C2D000030A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		FE55B5411DF839E600D3D69F /* ServiceDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceDetails.h; path = ../../src/ServiceDetails.h; sourceTree = "<group>"; };
+		FE55B5421DF839E600D3D69F /* ServiceDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceDetails.m; path = ../../src/ServiceDetails.m; sourceTree = "<group>"; };
 		FE7A4AD51D8D72D600E732B4 /* SessionDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionDetails.h; path = ../../src/SessionDetails.h; sourceTree = "<group>"; };
 		FE7A4AD61D8D72D600E732B4 /* SessionDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionDetails.m; path = ../../src/SessionDetails.m; sourceTree = "<group>"; };
 		FE991EF51C5F66540014F23E /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Context.h; path = ../../src/Context.h; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				FE991EFF1C5F66540014F23E /* MpinStatus.m */,
 				FE7A4AD51D8D72D600E732B4 /* SessionDetails.h */,
 				FE7A4AD61D8D72D600E732B4 /* SessionDetails.m */,
+				FE55B5411DF839E600D3D69F /* ServiceDetails.h */,
+				FE55B5421DF839E600D3D69F /* ServiceDetails.m */,
 				FE991F001C5F66540014F23E /* OTP.h */,
 				FE991F011C5F66540014F23E /* OTP.m */,
 				FE991F021C5F66540014F23E /* Storage.h */,
@@ -355,6 +360,7 @@
 				FED0EE081C68C984001AB531 /* ecp2.c in Sources */,
 				FED0EE151C68C984001AB531 /* version.c in Sources */,
 				FED0EE171C68C984001AB531 /* mpin_sdk.cpp in Sources */,
+				FE55B5431DF839E600D3D69F /* ServiceDetails.m in Sources */,
 				FE991F091C5F66540014F23E /* MpinStatus.m in Sources */,
 				FED0EE071C68C984001AB531 /* ecp.c in Sources */,
 				FE991F061C5F66540014F23E /* Context.mm in Sources */,

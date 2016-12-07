@@ -17,18 +17,12 @@
  under the License.
  */
 
-#import "SessionDetails.h"
+#import <Foundation/Foundation.h>
 
-@implementation SessionDetails
-
-- (id) initWith:(NSString * ) prerollId appName:(NSString *) appName appIconUrl:(NSString *) appIconUrl {
-    self = [super init];
-    if (self) {
-        self.prerollId = prerollId;
-        self.appName = appName;
-        self.appIconUrl = appIconUrl;
-    }
-    return self;
-}
-
+@interface ServiceDetails : NSObject
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * backendUrl;
+@property (nonatomic, strong) NSString * rpsPrefix;
+@property (nonatomic, strong) NSString * logoUrl;
+- (id) initWith:(NSString * ) name backendUrl:(NSString *) backendUrl rpsPrefix:(NSString *) rpsPrefix logoUrl:(NSString *) logoUrl;
 @end

@@ -231,18 +231,30 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (void) SetClientId:(NSString *) clientId {
-    [lock lock];
-    mpin.SetClientId([clientId UTF8String]);
-    [lock unlock];
-}
-
 + (MpinStatus*) FinishAuthenticationMFA:(id<IUser>)user pin:(NSString *) pin authzCode:(NSString **) authzCode {
     MPinSDK::String c_authzCode;
     [lock lock];
     Status s = mpin.FinishAuthenticationMFA( [((User *) user) getUserPtr], [pin UTF8String], c_authzCode);
     [lock unlock];
     *authzCode = [NSString stringWithUTF8String:c_authzCode.c_str()];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
++ (void) SetClientId:(NSString *) clientId {
+    [lock lock];
+    mpin.SetClientId([clientId UTF8String]);
+    [lock unlock];
+}
+
++ (MpinStatus*) GetServiceDetails:(NSString *) url serviceDetails:(ServiceDetails **)sd {
+    MPinSDK::ServiceDetails c_sd;
+    [lock lock];
+    Status s = mpin.GetServiceDetails([url UTF8String], c_sd);
+    [lock unlock];
+    *sd = [[ServiceDetails alloc] initWith:[NSString stringWithUTF8String:c_sd.name.c_str()]
+                                backendUrl:[NSString stringWithUTF8String:c_sd.backendUrl.c_str()]
+                                 rpsPrefix:[NSString stringWithUTF8String:c_sd.rpsPrefix.c_str()]
+                                   logoUrl:[NSString stringWithUTF8String:c_sd.logoUrl.c_str()]];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 

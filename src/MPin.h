@@ -22,6 +22,7 @@
 #import "MpinStatus.h"
 #import "OTP.h"
 #import "SessionDetails.h"
+#import "ServiceDetails.h"
 
 @interface MPin : NSObject
 
@@ -54,9 +55,11 @@
 + (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authResultData:(NSString **)authResultData;
 + (MpinStatus*) FinishAuthenticationOTP:(id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp;
 + (MpinStatus*) FinishAuthenticationAN:(id<IUser>)user pin:(NSString *) pin accessNumber:(NSString *)an;
++ (MpinStatus*) FinishAuthenticationMFA:(id<IUser>)user pin:(NSString *) pin authzCode:(NSString **) authzCode;
 
 + (void) SetClientId:(NSString *) clientId;
-+ (MpinStatus*) FinishAuthenticationMFA:(id<IUser>)user pin:(NSString *) pin authzCode:(NSString **) authzCode;
+
++ (MpinStatus*) GetServiceDetails:(NSString *) url serviceDetails:(ServiceDetails **)sd;
 
 + (Boolean) Logout:(const id<IUser>)user;
 + (Boolean) CanLogout:(const id<IUser>)user;
