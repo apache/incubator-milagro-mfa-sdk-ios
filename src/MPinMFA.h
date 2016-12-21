@@ -21,8 +21,10 @@
 #import "IUser.h"
 #import "MpinStatus.h"
 #import "OTP.h"
+#import "SessionDetails.h"
+#import "ServiceDetails.h"
 
-@interface MPin : NSObject
+@interface MPinMFA : NSObject
 
 + (void) initSDK;
 + (void) initSDKWithHeaders:(NSDictionary *)dictHeaders;
@@ -49,27 +51,19 @@
 /// TEMPORARY FIX
 + (NSString*) getRPSUrl;
 
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user;
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user userData:(NSString *) userData;
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode;
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode userData:(NSString *) userData;
-+ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;
++ (MpinStatus*) GetServiceDetails:(NSString *) url serviceDetails:(ServiceDetails **)sd;
++ (void) SetClientId:(NSString *) clientId;
++ (SessionDetails*) GetSessionDetails:(NSString *) accessCode;
++ (MpinStatus*) AbortSession:(NSString *) accessCode;
 
++ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode pmi:(NSString *) pmi;
 + (MpinStatus*) RestartRegistration:(const id<IUser>)user;
-+ (MpinStatus*) RestartRegistration:(const id<IUser>)user userData:(NSString *) userData;
-
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
-+ (MpinStatus*) ConfirmRegistration:(const id<IUser>)user  pushNotificationIdentifier:(NSString *) pushNotificationIdentifier;
-
-+ (MpinStatus*) StartAuthentication:(const id<IUser>)user;
-+ (MpinStatus*) CheckAccessNumber:(NSString *)an;
-+ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin;
-+ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authResultData:(NSString **)authResultData;
-+ (MpinStatus*) FinishAuthenticationOTP:(id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp;
++ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;
++ (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
++ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authzCode:(NSString **)authzCode;
 + (MpinStatus*) FinishAuthenticationAN:(id<IUser>)user pin:(NSString *) pin accessNumber:(NSString *)an;
 
 + (NSMutableArray*) listUsers;
-+ (NSMutableArray*) listUsers:( NSString *) backendURL;
-+ (NSMutableArray*) listBackends;
 
 @end

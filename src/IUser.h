@@ -28,6 +28,12 @@ typedef NS_ENUM(NSInteger, UserState) {
 };
 
 @protocol IUser <NSObject>
-- (NSString*)getIdentity;
-- (UserState)getState;
+
+- (NSString*) getIdentity;
+- (UserState) getState;
+- (NSString*) getBackend;
+- (NSString*) GetCustomerId;
+- (NSString*) GetAppId;
+- (NSString*) GetMPinId;
+
 @end
