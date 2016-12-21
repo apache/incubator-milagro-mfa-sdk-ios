@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		FE49FF9C1A1A3C2D000030A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */; };
 		FE55B5431DF839E600D3D69F /* ServiceDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FE55B5421DF839E600D3D69F /* ServiceDetails.m */; };
+		FE71B73E1E0AA6A3009A49C9 /* MPinMFA.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE71B73D1E0AA6A3009A49C9 /* MPinMFA.mm */; };
+		FE71B7421E0AB960009A49C9 /* mfa_sdk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE71B73F1E0AB960009A49C9 /* mfa_sdk.cpp */; };
 		FE7A4AD71D8D72D600E732B4 /* SessionDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FE7A4AD61D8D72D600E732B4 /* SessionDetails.m */; };
 		FE991F061C5F66540014F23E /* Context.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991EF61C5F66540014F23E /* Context.mm */; };
 		FE991F071C5F66540014F23E /* HTTPConnector.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE991EFA1C5F66540014F23E /* HTTPConnector.mm */; };
@@ -68,6 +70,11 @@
 		FE49FFAC1A1A3C2D000030A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		FE55B5411DF839E600D3D69F /* ServiceDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServiceDetails.h; path = ../../src/ServiceDetails.h; sourceTree = "<group>"; };
 		FE55B5421DF839E600D3D69F /* ServiceDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServiceDetails.m; path = ../../src/ServiceDetails.m; sourceTree = "<group>"; };
+		FE71B73C1E0AA6A3009A49C9 /* MPinMFA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MPinMFA.h; path = ../../src/MPinMFA.h; sourceTree = "<group>"; };
+		FE71B73D1E0AA6A3009A49C9 /* MPinMFA.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MPinMFA.mm; path = ../../src/MPinMFA.mm; sourceTree = "<group>"; };
+		FE71B73F1E0AB960009A49C9 /* mfa_sdk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mfa_sdk.cpp; path = "../../mpin-sdk-core/src/mfa_sdk.cpp"; sourceTree = "<group>"; };
+		FE71B7401E0AB960009A49C9 /* mfa_sdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mfa_sdk.h; path = "../../mpin-sdk-core/src/mfa_sdk.h"; sourceTree = "<group>"; };
+		FE71B7411E0AB960009A49C9 /* mpin_sdk_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mpin_sdk_base.h; path = "../../mpin-sdk-core/src/mpin_sdk_base.h"; sourceTree = "<group>"; };
 		FE7A4AD51D8D72D600E732B4 /* SessionDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionDetails.h; path = ../../src/SessionDetails.h; sourceTree = "<group>"; };
 		FE7A4AD61D8D72D600E732B4 /* SessionDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionDetails.m; path = ../../src/SessionDetails.m; sourceTree = "<group>"; };
 		FE991EF51C5F66540014F23E /* Context.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Context.h; path = ../../src/Context.h; sourceTree = "<group>"; };
@@ -128,7 +135,6 @@
 		FED0EE011C68C984001AB531 /* utf8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utf8.h; path = "../../mpin-sdk-core/src/utf8.h"; sourceTree = "<group>"; };
 		FED0EE021C68C984001AB531 /* utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = utils.cpp; path = "../../mpin-sdk-core/src/utils.cpp"; sourceTree = "<group>"; };
 		FED0EE031C68C984001AB531 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utils.h; path = "../../mpin-sdk-core/src/utils.h"; sourceTree = "<group>"; };
-		FED0EE041C68C984001AB531 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = "../../mpin-sdk-core/src/version.h"; sourceTree = "<group>"; };
 		FED0EE191C68C9A3001AB531 /* CvString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CvString.cpp; path = "../../mpin-sdk-core/ext/cvshared/cpp/CvString.cpp"; sourceTree = "<group>"; };
 		FED0EE1A1C68C9A3001AB531 /* CvXcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CvXcode.cpp; path = "../../mpin-sdk-core/ext/cvshared/cpp/CvXcode.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,9 +186,10 @@
 				FE991EF81C5F66540014F23E /* Exceptions.h */,
 				FE991EF91C5F66540014F23E /* HTTPConnector.h */,
 				FE991EFA1C5F66540014F23E /* HTTPConnector.mm */,
-				FE991EFB1C5F66540014F23E /* IUser.h */,
 				FE991EFC1C5F66540014F23E /* MPin.h */,
 				FE991EFD1C5F66540014F23E /* MPin.mm */,
+				FE71B73C1E0AA6A3009A49C9 /* MPinMFA.h */,
+				FE71B73D1E0AA6A3009A49C9 /* MPinMFA.mm */,
 				FE991EFE1C5F66540014F23E /* MpinStatus.h */,
 				FE991EFF1C5F66540014F23E /* MpinStatus.m */,
 				FE7A4AD51D8D72D600E732B4 /* SessionDetails.h */,
@@ -193,6 +200,7 @@
 				FE991F011C5F66540014F23E /* OTP.m */,
 				FE991F021C5F66540014F23E /* Storage.h */,
 				FE991F031C5F66540014F23E /* Storage.mm */,
+				FE991EFB1C5F66540014F23E /* IUser.h */,
 				FE991F041C5F66540014F23E /* User.h */,
 				FE991F051C5F66540014F23E /* User.mm */,
 				FE49FF9E1A1A3C2D000030A4 /* Supporting Files */,
@@ -219,13 +227,15 @@
 				FED0EDF81C68C984001AB531 /* mpin_crypto_non_tee.cpp */,
 				FED0EDF91C68C984001AB531 /* mpin_crypto_non_tee.h */,
 				FED0EDFA1C68C984001AB531 /* mpin_crypto.h */,
+				FE71B73F1E0AB960009A49C9 /* mfa_sdk.cpp */,
 				FED0EDFB1C68C984001AB531 /* mpin_sdk.cpp */,
+				FE71B7411E0AB960009A49C9 /* mpin_sdk_base.h */,
 				FED0EDFC1C68C984001AB531 /* mpin_sdk.h */,
+				FE71B7401E0AB960009A49C9 /* mfa_sdk.h */,
 				FED0EDFD1C68C984001AB531 /* utf8 */,
 				FED0EE011C68C984001AB531 /* utf8.h */,
 				FED0EE021C68C984001AB531 /* utils.cpp */,
 				FED0EE031C68C984001AB531 /* utils.h */,
-				FED0EE041C68C984001AB531 /* version.h */,
 				FE991EF61C5F66540014F23E /* Context.mm */,
 			);
 			name = core;
@@ -345,6 +355,7 @@
 				FED0EE091C68C984001AB531 /* ff.c in Sources */,
 				FED0EE111C68C984001AB531 /* oct.c in Sources */,
 				FE991F0A1C5F66540014F23E /* OTP.m in Sources */,
+				FE71B7421E0AB960009A49C9 /* mfa_sdk.cpp in Sources */,
 				FE991F071C5F66540014F23E /* HTTPConnector.mm in Sources */,
 				FED0EE121C68C984001AB531 /* pair.c in Sources */,
 				FE7A4AD71D8D72D600E732B4 /* SessionDetails.m in Sources */,
@@ -364,6 +375,7 @@
 				FE991F091C5F66540014F23E /* MpinStatus.m in Sources */,
 				FED0EE071C68C984001AB531 /* ecp.c in Sources */,
 				FE991F061C5F66540014F23E /* Context.mm in Sources */,
+				FE71B73E1E0AA6A3009A49C9 /* MPinMFA.mm in Sources */,
 				FED0EE0E1C68C984001AB531 /* gcm.c in Sources */,
 				FED0EE0C1C68C984001AB531 /* fp2.c in Sources */,
 				FED0EE181C68C984001AB531 /* utils.cpp in Sources */,
