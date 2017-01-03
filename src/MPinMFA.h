@@ -61,8 +61,8 @@
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
 + (MpinStatus*) FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
-+ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authzCode:(NSString **)authzCode;
-+ (MpinStatus*) FinishAuthenticationAN:(id<IUser>)user pin:(NSString *) pin accessNumber:(NSString *)an;
++ (MpinStatus*) FinishAuthentication:(id<IUser>)user pin:(NSString *) pin accessCode:(NSString *)ac;
++ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin accessCode:(NSString *)ac authzCode:(NSString **)authzCode;
 
 + (NSMutableArray*) listUsers;
 

@@ -53,7 +53,11 @@ void Storage::writeStringToFile(const String & aFileName, const IN String & aDat
     }
     [[[NSString stringWithUTF8String:aData.c_str()] dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
 }
-
+    
+bool Storage:: ClearData() {
+    return SetData("");
+}
+    
 bool Storage::SetData(const String& data) {
     store = data;
     Save();
@@ -68,10 +72,10 @@ bool Storage::GetData(String &data) {
 
 const String& Storage::GetErrorMessage() const { return m_errorMessage; }
 
-    void Storage::Save() {
-        if(m_isMpinType)  writeStringToFile(SECURE_STORE, secureInMemoryStore);
-        else writeStringToFile(STORE, inMemoryStore);
-    }
+void Storage::Save() {
+    if(m_isMpinType)  writeStringToFile(SECURE_STORE, secureInMemoryStore);
+    else writeStringToFile(STORE, inMemoryStore);
+}
     
 Storage::~Storage() {
     Save();

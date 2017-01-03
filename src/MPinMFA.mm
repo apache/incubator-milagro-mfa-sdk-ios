@@ -255,19 +255,19 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus*)FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authzCode:(NSString **)authzCode {
-    MPinSDK::String c_authzCode;
++ (MpinStatus *) FinishAuthentication:(id<IUser>) user pin:(NSString *) pin  accessCode:(NSString *) ac {
     [lock lock];
-    Status s = mpin.FinishAuthentication([((User *) user) getUserPtr], [pin UTF8String], c_authzCode);
+    Status s = mpin.FinishAuthentication([((User *) user) getUserPtr], [pin UTF8String], [ac UTF8String]);
     [lock unlock];
-    *authzCode = [NSString stringWithUTF8String:c_authzCode.c_str()];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus *) FinishAuthenticationAN:(id<IUser>) user pin:(NSString *) pin  accessNumber:(NSString *) an {
++ (MpinStatus*)FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin accessCode:(NSString *)ac authzCode:(NSString **)authzCode {
+    MPinSDK::String c_authzCode;
     [lock lock];
-     Status s = mpin.FinishAuthenticationAC([((User *) user) getUserPtr], [pin UTF8String], [an UTF8String]);
+    Status s = mpin.FinishAuthentication([((User *) user) getUserPtr], [pin UTF8String], [ac UTF8String] , c_authzCode);
     [lock unlock];
+    *authzCode = [NSString stringWithUTF8String:c_authzCode.c_str()];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 

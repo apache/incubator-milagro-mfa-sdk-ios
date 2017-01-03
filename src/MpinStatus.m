@@ -85,6 +85,9 @@
         case CLIENT_SECRET_EXPIRED:
             result = @"CLIENT_SECRET_EXPIRED";
             break;
+        case UNTRUSTED_DOMAIN_ERROR:
+            result = @"UNTRUSTED_DOMAIN_ERROR";
+            break;
         default:
             break;
     }
