@@ -92,6 +92,18 @@ typedef sdk_non_tee::Context Context;
     [lock unlock];
 }
 
++ (void) AddTrustedDomain:(NSString *) domain {
+    [lock lock];
+    mpin.AddTrustedDomain( (domain == nil)?(""):([domain UTF8String]));
+    [lock unlock];
+}
+
++ (void) ClearTrustedDomains {
+    [lock lock];
+    mpin.ClearTrustedDomains();
+    [lock unlock];
+}
+
 + (MpinStatus*) TestBackend:(const NSString * ) url {
     [lock lock];
     Status s = mpin.TestBackend((url == nil)?(""):([url UTF8String]));

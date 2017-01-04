@@ -33,6 +33,9 @@
 + (void) AddCustomHeaders:(NSDictionary *)dictHeaders;
 + (void) ClearCustomHeaders;
 
++ (void) AddTrustedDomain:(NSString *) domain;
++ (void) ClearTrustedDomains;
+
 + (MpinStatus*) TestBackend:(const NSString*)url;
 + (MpinStatus*) SetBackend:(const NSString*)url;
 + (MpinStatus*) TestBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
