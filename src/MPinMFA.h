@@ -29,7 +29,6 @@
 + (void) initSDK;
 + (void) initSDKWithHeaders:(NSDictionary *)dictHeaders;
 + (void) Destroy;
-+ (void) ClearUsers;
 + (void) AddCustomHeaders:(NSDictionary *)dictHeaders;
 + (void) ClearCustomHeaders;
 
@@ -45,6 +44,7 @@
 + (id<IUser>) MakeNewUser:(const NSString*)identity
               deviceName:(const NSString*)devName;
 + (void) DeleteUser:(const id<IUser>)user;
++ (void) ClearUsers;
 
 + (Boolean) Logout:(const id<IUser>)user;
 + (Boolean) CanLogout:(const id<IUser>)user;
@@ -58,6 +58,8 @@
 + (void) SetClientId:(NSString *) clientId;
 + (SessionDetails*) GetSessionDetails:(NSString *) accessCode;
 + (MpinStatus*) AbortSession:(NSString *) accessCode;
+
++ (MpinStatus*) GetAccessCode:(NSString *) authzUrl accessCode:(NSString **)ac;
 
 + (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode pmi:(NSString *) pmi;
 + (MpinStatus*) RestartRegistration:(const id<IUser>)user;

@@ -232,6 +232,15 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
++ (MpinStatus*) GetAccessCode:(NSString *) authzUrl accessCode:(NSString **)ac {
+    MPinSDK::String c_ac;
+    [lock lock];
+    Status s = mpin.GetAccessCode([authzUrl UTF8String], c_ac);
+    [lock unlock];
+    *ac = [NSString stringWithUTF8String:c_ac.c_str()];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
 + (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode pmi:(NSString *) pmi {
     [lock lock];
     Status s = mpin.StartRegistration([((User *) user) getUserPtr], [activateCode UTF8String], [pmi UTF8String]);

@@ -27,7 +27,6 @@
 + (void) initSDK;
 + (void) initSDKWithHeaders:(NSDictionary *)dictHeaders;
 + (void) Destroy;
-+ (void) ClearUsers;
 + (void) AddCustomHeaders:(NSDictionary *)dictHeaders;
 + (void) ClearCustomHeaders;
 
@@ -43,6 +42,7 @@
 + (id<IUser>) MakeNewUser:(const NSString*)identity
               deviceName:(const NSString*)devName;
 + (void) DeleteUser:(const id<IUser>)user;
++ (void) ClearUsers;
 
 + (Boolean) Logout:(const id<IUser>)user;
 + (Boolean) CanLogout:(const id<IUser>)user;
