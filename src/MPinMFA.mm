@@ -189,6 +189,13 @@ typedef sdk_non_tee::Context Context;
     return nil;
 }
 
++ (Boolean) IsUserExisting:(NSString *) identity customerId:(NSString *) customerId appId:(NSString *) appId {
+    [lock lock];
+    Boolean b = mpin.IsUserExisting([identity UTF8String], [customerId UTF8String], [appId UTF8String]);
+    [lock unlock];
+    return b;
+}
+
 + (void) SetClientId:(NSString *) clientId {
     [lock lock];
     mpin.SetCID([clientId UTF8String]);

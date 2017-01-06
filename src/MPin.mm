@@ -157,6 +157,13 @@ typedef sdk_non_tee::Context Context;
     [lock unlock];
 }
 
++ (Boolean) IsUserExisting:(NSString *) identity customerId:(NSString *) customerId appId:(NSString *) appId {
+    [lock lock];
+    Boolean b = mpin.IsUserExisting([identity UTF8String], [customerId UTF8String], [appId UTF8String]);
+    [lock unlock];
+    return b;
+}
+
 + (Boolean) Logout:(const id<IUser>) user {
     [lock lock];
     Boolean b = mpin.Logout([((User *) user) getUserPtr]);
