@@ -159,9 +159,16 @@ typedef sdk_non_tee::Context Context;
 
 + (Boolean) IsUserExisting:(NSString *) identity customerId:(NSString *) customerId appId:(NSString *) appId {
     [lock lock];
-    Boolean b = mpin.IsUserExisting([identity UTF8String], [customerId UTF8String], [appId UTF8String]);
+    Boolean b = mpin.IsUserExisting([identity UTF8String],
+                                    (customerId == nil)?(""):([customerId UTF8String]),
+                                    (appId == nil)?(""):([appId UTF8String])
+                                    );
     [lock unlock];
     return b;
+}
+
++ (Boolean) IsUserExisting:(NSString *) identity {
+   return [MPin IsUserExisting:identity customerId:@"" appId:@""];
 }
 
 + (Boolean) Logout:(const id<IUser>) user {
@@ -202,10 +209,6 @@ typedef sdk_non_tee::Context Context;
     return [MPin StartRegistration:user activateCode:@"" userData:@""];
 }
 
-+ (MpinStatus*) RestartRegistration:(const id<IUser>) user {
-    return [MPin RestartRegistration:user userData:@""];
-}
-
 + (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode {
     return [MPin StartRegistration:user activateCode:activateCode userData:@""];
 }
@@ -228,6 +231,9 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
++ (MpinStatus*) RestartRegistration:(const id<IUser>) user {
+    return [MPin RestartRegistration:user userData:@""];
+}
 
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user {
     return [MPin ConfirmRegistration:user pushNotificationIdentifier:nil];
