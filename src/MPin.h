@@ -22,6 +22,10 @@
 #import "MpinStatus.h"
 #import "OTP.h"
 
+#ifndef CLEAR_USERS_NOTIFICATION
+#define CLEAR_USERS_NOTIFICATION @"ClearAllUsers"
+#endif
+
 @interface MPin : NSObject
 
 + (void) initSDK;

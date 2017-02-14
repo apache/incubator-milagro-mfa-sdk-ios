@@ -184,6 +184,7 @@
 			children = (
 				FED0EDD71C68C965001AB531 /* core */,
 				FE991EF51C5F66540014F23E /* Context.h */,
+				FE991EF61C5F66540014F23E /* Context.mm */,
 				FE991EF71C5F66540014F23E /* def.h */,
 				FE991EF81C5F66540014F23E /* Exceptions.h */,
 				FE991EF91C5F66540014F23E /* HTTPConnector.h */,
@@ -239,7 +240,6 @@
 				FED0EE011C68C984001AB531 /* utf8.h */,
 				FED0EE021C68C984001AB531 /* utils.cpp */,
 				FED0EE031C68C984001AB531 /* utils.h */,
-				FE991EF61C5F66540014F23E /* Context.mm */,
 			);
 			name = core;
 			sourceTree = "<group>";

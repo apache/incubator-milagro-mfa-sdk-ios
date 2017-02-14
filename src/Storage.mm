@@ -55,6 +55,7 @@ void Storage::writeStringToFile(const String & aFileName, const IN String & aDat
 }
     
 bool Storage:: ClearData() {
+    [[NSNotificationCenter defaultCenter] postNotificationName:CLEAR_USERS_NOTIFICATION object:nil];
     return SetData("");
 }
     

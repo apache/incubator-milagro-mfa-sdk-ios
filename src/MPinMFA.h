@@ -24,6 +24,10 @@
 #import "SessionDetails.h"
 #import "ServiceDetails.h"
 
+#ifndef CLEAR_USERS_NOTIFICATION
+#define CLEAR_USERS_NOTIFICATION @"ClearAllUsers"
+#endif
+
 @interface MPinMFA : NSObject
 
 + (void) initSDK;
