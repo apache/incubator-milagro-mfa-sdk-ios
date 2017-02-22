@@ -30,4 +30,5 @@ typedef MPinSDK::UserPtr UserPtr;
 
 -(id) initWith:(UserPtr)usrPtr;
 -(UserPtr) getUserPtr;
+
 @end

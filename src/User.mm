@@ -60,4 +60,8 @@
     return [NSString stringWithUTF8String:userPtr->GetMPinId().c_str()];
 }
 
+- (Expiration*) GetRegistrationExpiration {
+    return [[Expiration alloc] initWith:userPtr->GetRegistrationExpiration().nowTimeSeconds expireTime:userPtr->GetRegistrationExpiration().expireTimeSeconds];
+}
+
 @end

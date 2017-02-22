@@ -73,6 +73,8 @@
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
 + (MpinStatus*) FinishAuthentication:(id<IUser>)user pin:(NSString *) pin accessCode:(NSString *)ac;
 + (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin accessCode:(NSString *)ac authzCode:(NSString **)authzCode;
++ (MpinStatus*) StartAuthenticationOTP:(const id<IUser>)user;
++ (MpinStatus*) FinishAuthenticationOTP:(const id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp;
 
 + (NSMutableArray*) listUsers;
 

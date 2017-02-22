@@ -46,6 +46,7 @@
 		FED0EE181C68C984001AB531 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FED0EE021C68C984001AB531 /* utils.cpp */; };
 		FED0EE1B1C68C9A3001AB531 /* CvString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FED0EE191C68C9A3001AB531 /* CvString.cpp */; };
 		FED0EE1C1C68C9A3001AB531 /* CvXcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FED0EE1A1C68C9A3001AB531 /* CvXcode.cpp */; };
+		FEFB12771E5DBA79005746CD /* Expiration.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFB12761E5DBA79005746CD /* Expiration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -118,7 +119,6 @@
 		FED0EDEC1C68C984001AB531 /* rom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rom.c; sourceTree = "<group>"; };
 		FED0EDED1C68C984001AB531 /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = version.c; sourceTree = "<group>"; };
 		FED0EDEE1C68C984001AB531 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		FED0EDEF1C68C984001AB531 /* cv_shared_ptr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cv_shared_ptr.h; path = "../../mpin-sdk-core/src/cv_shared_ptr.h"; sourceTree = "<group>"; };
 		FED0EDF11C68C984001AB531 /* elements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = elements.h; sourceTree = "<group>"; };
 		FED0EDF21C68C984001AB531 /* elements.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = elements.inl; sourceTree = "<group>"; };
 		FED0EDF31C68C984001AB531 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
@@ -139,6 +139,8 @@
 		FED0EE031C68C984001AB531 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utils.h; path = "../../mpin-sdk-core/src/utils.h"; sourceTree = "<group>"; };
 		FED0EE191C68C9A3001AB531 /* CvString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CvString.cpp; path = "../../mpin-sdk-core/ext/cvshared/cpp/CvString.cpp"; sourceTree = "<group>"; };
 		FED0EE1A1C68C9A3001AB531 /* CvXcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CvXcode.cpp; path = "../../mpin-sdk-core/ext/cvshared/cpp/CvXcode.cpp"; sourceTree = "<group>"; };
+		FEFB12751E5DBA79005746CD /* Expiration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Expiration.h; path = ../../src/Expiration.h; sourceTree = "<group>"; };
+		FEFB12761E5DBA79005746CD /* Expiration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Expiration.m; path = ../../src/Expiration.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,8 @@
 				FE55B5421DF839E600D3D69F /* ServiceDetails.m */,
 				FE991F001C5F66540014F23E /* OTP.h */,
 				FE991F011C5F66540014F23E /* OTP.m */,
+				FEFB12751E5DBA79005746CD /* Expiration.h */,
+				FEFB12761E5DBA79005746CD /* Expiration.m */,
 				FE991F021C5F66540014F23E /* Storage.h */,
 				FE991F031C5F66540014F23E /* Storage.mm */,
 				FE991EFB1C5F66540014F23E /* IUser.h */,
@@ -225,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				FED0EDD81C68C984001AB531 /* crypto */,
-				FED0EDEF1C68C984001AB531 /* cv_shared_ptr.h */,
 				FED0EDF01C68C984001AB531 /* json */,
 				FED0EDF81C68C984001AB531 /* mpin_crypto_non_tee.cpp */,
 				FED0EDF91C68C984001AB531 /* mpin_crypto_non_tee.h */,
@@ -381,6 +384,7 @@
 				FE991F061C5F66540014F23E /* Context.mm in Sources */,
 				FE71B73E1E0AA6A3009A49C9 /* MPinMFA.mm in Sources */,
 				FED0EE0E1C68C984001AB531 /* gcm.c in Sources */,
+				FEFB12771E5DBA79005746CD /* Expiration.m in Sources */,
 				FED0EE0C1C68C984001AB531 /* fp2.c in Sources */,
 				FED0EE181C68C984001AB531 /* utils.cpp in Sources */,
 				FE991F081C5F66540014F23E /* MPin.mm in Sources */,
