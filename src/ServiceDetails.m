@@ -17,25 +17,17 @@
  under the License.
  */
 
-#import <Foundation/Foundation.h>
-#import "Expiration.h"
+#import "ServiceDetails.h"
 
-typedef NS_ENUM(NSInteger, UserState) {
-    INVALID = 0,
-    STARTED_REGISTRATION,
-    ACTIVATED,
-    REGISTERED,
-    BLOCKED
-};
-
-@protocol IUser <NSObject>
-
-- (NSString*) getIdentity;
-- (UserState) getState;
-- (NSString*) getBackend;
-- (NSString*) GetCustomerId;
-- (NSString*) GetAppId;
-- (NSString*) GetMPinId;
-- (Expiration*) GetRegistrationExpiration;
-
+@implementation ServiceDetails
+- (id) initWith:(NSString * ) name backendUrl:(NSString *) backendUrl rpsPrefix:(NSString *) rpsPrefix logoUrl:(NSString *) logoUrl {
+    self = [super init];
+    if (self) {
+        self.name = name;
+        self.backendUrl = backendUrl;
+        self.rpsPrefix = rpsPrefix;
+        self.logoUrl = logoUrl;
+    }
+    return self;
+}
 @end

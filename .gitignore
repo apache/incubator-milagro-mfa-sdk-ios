@@ -35,3 +35,4 @@ build/
 
 *.xccheckout
 xcuserdata/
+MPinSDK/MPinSDK.xcodeproj/project.xcworkspace/xcshareddata/
