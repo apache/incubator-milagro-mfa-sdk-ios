@@ -7,6 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3989B6381F385A7F0072BB11 /* aes.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B5FF1F3859E20072BB11 /* aes.c */; };
+		3989B6391F385A7F0072BB11 /* big.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6001F3859E20072BB11 /* big.c */; };
+		3989B63A1F385A7F0072BB11 /* ecdh.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6011F3859E20072BB11 /* ecdh.c */; };
+		3989B63B1F385A7F0072BB11 /* ecp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6021F3859E20072BB11 /* ecp.c */; };
+		3989B63C1F385A7F0072BB11 /* ecp2.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6031F3859E20072BB11 /* ecp2.c */; };
+		3989B63D1F385A7F0072BB11 /* ff.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6041F3859E20072BB11 /* ff.c */; };
+		3989B63E1F385A7F0072BB11 /* fp.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6051F3859E20072BB11 /* fp.c */; };
+		3989B63F1F385A7F0072BB11 /* fp2.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6061F3859E20072BB11 /* fp2.c */; };
+		3989B6401F385A7F0072BB11 /* fp4.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6071F3859E20072BB11 /* fp4.c */; };
+		3989B6411F385A7F0072BB11 /* fp12.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6081F3859E20072BB11 /* fp12.c */; };
+		3989B6421F385A7F0072BB11 /* gcm.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6091F3859E20072BB11 /* gcm.c */; };
+		3989B6431F385A7F0072BB11 /* hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B60A1F3859E20072BB11 /* hash.c */; };
+		3989B6441F385A7F0072BB11 /* mpin.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B60B1F3859E20072BB11 /* mpin.c */; };
+		3989B6451F385A7F0072BB11 /* oct.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B60C1F3859E20072BB11 /* oct.c */; };
+		3989B6461F385A7F0072BB11 /* pair.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B60D1F3859E20072BB11 /* pair.c */; };
+		3989B6471F385A7F0072BB11 /* rand.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B60E1F3859E20072BB11 /* rand.c */; };
+		3989B6481F385A7F0072BB11 /* randapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B60F1F3859E20072BB11 /* randapi.c */; };
+		3989B6491F385A7F0072BB11 /* rom.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6101F3859E20072BB11 /* rom.c */; };
+		3989B64A1F385A7F0072BB11 /* rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6111F3859E20072BB11 /* rsa.c */; };
+		3989B64B1F385A7F0072BB11 /* utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6121F3859E20072BB11 /* utils.c */; };
+		3989B64C1F385A7F0072BB11 /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6131F3859E20072BB11 /* version.c */; };
+		3989B64D1F385A7F0072BB11 /* wcc.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6141F3859E20072BB11 /* wcc.c */; };
+		3989B64E1F385A7F0072BB11 /* x509.c in Sources */ = {isa = PBXBuildFile; fileRef = 3989B6151F3859E20072BB11 /* x509.c */; };
 		FE49FF9C1A1A3C2D000030A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */; };
 		FE55B5431DF839E600D3D69F /* ServiceDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = FE55B5421DF839E600D3D69F /* ServiceDetails.m */; };
 		FE6016451E0AE298002D8BDE /* mpin_sdk_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE6016441E0AE298002D8BDE /* mpin_sdk_base.cpp */; };
@@ -24,23 +47,6 @@
 		FEBBC18C1C5F88F80011001A /* MPin.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FE991EFC1C5F66540014F23E /* MPin.h */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FEBBC18D1C5F88F80011001A /* OTP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FE991F001C5F66540014F23E /* OTP.h */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FEBBC18E1C5F89100011001A /* MpinStatus.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FE991EFE1C5F66540014F23E /* MpinStatus.h */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		FED0EE051C68C984001AB531 /* aes.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDD91C68C984001AB531 /* aes.c */; };
-		FED0EE061C68C984001AB531 /* big.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDDA1C68C984001AB531 /* big.c */; };
-		FED0EE071C68C984001AB531 /* ecp.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDDD1C68C984001AB531 /* ecp.c */; };
-		FED0EE081C68C984001AB531 /* ecp2.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDDE1C68C984001AB531 /* ecp2.c */; };
-		FED0EE091C68C984001AB531 /* ff.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDDF1C68C984001AB531 /* ff.c */; };
-		FED0EE0A1C68C984001AB531 /* fp.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE01C68C984001AB531 /* fp.c */; };
-		FED0EE0B1C68C984001AB531 /* fp12.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE11C68C984001AB531 /* fp12.c */; };
-		FED0EE0C1C68C984001AB531 /* fp2.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE21C68C984001AB531 /* fp2.c */; };
-		FED0EE0D1C68C984001AB531 /* fp4.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE31C68C984001AB531 /* fp4.c */; };
-		FED0EE0E1C68C984001AB531 /* gcm.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE41C68C984001AB531 /* gcm.c */; };
-		FED0EE0F1C68C984001AB531 /* hash.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE51C68C984001AB531 /* hash.c */; };
-		FED0EE101C68C984001AB531 /* mpin.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE61C68C984001AB531 /* mpin.c */; };
-		FED0EE111C68C984001AB531 /* oct.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE81C68C984001AB531 /* oct.c */; };
-		FED0EE121C68C984001AB531 /* pair.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDE91C68C984001AB531 /* pair.c */; };
-		FED0EE131C68C984001AB531 /* rand.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDEB1C68C984001AB531 /* rand.c */; };
-		FED0EE141C68C984001AB531 /* rom.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDEC1C68C984001AB531 /* rom.c */; };
-		FED0EE151C68C984001AB531 /* version.c in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDED1C68C984001AB531 /* version.c */; };
 		FED0EE161C68C984001AB531 /* mpin_crypto_non_tee.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDF81C68C984001AB531 /* mpin_crypto_non_tee.cpp */; };
 		FED0EE171C68C984001AB531 /* mpin_sdk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FED0EDFB1C68C984001AB531 /* mpin_sdk.cpp */; };
 		FED0EE181C68C984001AB531 /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FED0EE021C68C984001AB531 /* utils.cpp */; };
@@ -66,6 +72,40 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3989B5FF1F3859E20072BB11 /* aes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = aes.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/aes.c"; sourceTree = SOURCE_ROOT; };
+		3989B6001F3859E20072BB11 /* big.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = big.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/big.c"; sourceTree = SOURCE_ROOT; };
+		3989B6011F3859E20072BB11 /* ecdh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ecdh.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/ecdh.c"; sourceTree = SOURCE_ROOT; };
+		3989B6021F3859E20072BB11 /* ecp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ecp.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/ecp.c"; sourceTree = SOURCE_ROOT; };
+		3989B6031F3859E20072BB11 /* ecp2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ecp2.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/ecp2.c"; sourceTree = SOURCE_ROOT; };
+		3989B6041F3859E20072BB11 /* ff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ff.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/ff.c"; sourceTree = SOURCE_ROOT; };
+		3989B6051F3859E20072BB11 /* fp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fp.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/fp.c"; sourceTree = SOURCE_ROOT; };
+		3989B6061F3859E20072BB11 /* fp2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fp2.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/fp2.c"; sourceTree = SOURCE_ROOT; };
+		3989B6071F3859E20072BB11 /* fp4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fp4.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/fp4.c"; sourceTree = SOURCE_ROOT; };
+		3989B6081F3859E20072BB11 /* fp12.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fp12.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/fp12.c"; sourceTree = SOURCE_ROOT; };
+		3989B6091F3859E20072BB11 /* gcm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = gcm.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/gcm.c"; sourceTree = SOURCE_ROOT; };
+		3989B60A1F3859E20072BB11 /* hash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hash.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/hash.c"; sourceTree = SOURCE_ROOT; };
+		3989B60B1F3859E20072BB11 /* mpin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mpin.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/mpin.c"; sourceTree = SOURCE_ROOT; };
+		3989B60C1F3859E20072BB11 /* oct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = oct.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/oct.c"; sourceTree = SOURCE_ROOT; };
+		3989B60D1F3859E20072BB11 /* pair.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pair.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/pair.c"; sourceTree = SOURCE_ROOT; };
+		3989B60E1F3859E20072BB11 /* rand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rand.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/rand.c"; sourceTree = SOURCE_ROOT; };
+		3989B60F1F3859E20072BB11 /* randapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = randapi.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/randapi.c"; sourceTree = SOURCE_ROOT; };
+		3989B6101F3859E20072BB11 /* rom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rom.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/rom.c"; sourceTree = SOURCE_ROOT; };
+		3989B6111F3859E20072BB11 /* rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rsa.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/rsa.c"; sourceTree = SOURCE_ROOT; };
+		3989B6121F3859E20072BB11 /* utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = utils.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/utils.c"; sourceTree = SOURCE_ROOT; };
+		3989B6131F3859E20072BB11 /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = version.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/version.c"; sourceTree = SOURCE_ROOT; };
+		3989B6141F3859E20072BB11 /* wcc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wcc.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/wcc.c"; sourceTree = SOURCE_ROOT; };
+		3989B6151F3859E20072BB11 /* x509.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = x509.c; path = "../mpin-sdk-core/ext/milagro-crypto-c/src/x509.c"; sourceTree = SOURCE_ROOT; };
+		3989B62D1F385A020072BB11 /* amcl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = amcl.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/amcl.h"; sourceTree = SOURCE_ROOT; };
+		3989B62E1F385A020072BB11 /* arch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = arch.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/arch.h"; sourceTree = SOURCE_ROOT; };
+		3989B62F1F385A020072BB11 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/config.h"; sourceTree = SOURCE_ROOT; };
+		3989B6301F385A020072BB11 /* ecdh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ecdh.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/ecdh.h"; sourceTree = SOURCE_ROOT; };
+		3989B6311F385A020072BB11 /* mpin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mpin.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/mpin.h"; sourceTree = SOURCE_ROOT; };
+		3989B6321F385A020072BB11 /* randapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = randapi.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/randapi.h"; sourceTree = SOURCE_ROOT; };
+		3989B6331F385A020072BB11 /* rsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rsa.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/rsa.h"; sourceTree = SOURCE_ROOT; };
+		3989B6341F385A020072BB11 /* utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = utils.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/utils.h"; sourceTree = SOURCE_ROOT; };
+		3989B6351F385A020072BB11 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/version.h"; sourceTree = SOURCE_ROOT; };
+		3989B6361F385A020072BB11 /* wcc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wcc.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/wcc.h"; sourceTree = SOURCE_ROOT; };
+		3989B6371F385A020072BB11 /* x509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = x509.h; path = "../mpin-sdk-core/ext/milagro-crypto-c/include/x509.h"; sourceTree = SOURCE_ROOT; };
 		FE49FF981A1A3C2D000030A4 /* libMPinSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPinSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FE49FF9F1A1A3C2D000030A4 /* MPinSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPinSDK-Prefix.pch"; sourceTree = "<group>"; };
@@ -97,28 +137,6 @@
 		FE991F031C5F66540014F23E /* Storage.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Storage.mm; path = ../../src/Storage.mm; sourceTree = "<group>"; };
 		FE991F041C5F66540014F23E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../../src/User.h; sourceTree = "<group>"; };
 		FE991F051C5F66540014F23E /* User.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = User.mm; path = ../../src/User.mm; sourceTree = "<group>"; };
-		FED0EDD91C68C984001AB531 /* aes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aes.c; sourceTree = "<group>"; };
-		FED0EDDA1C68C984001AB531 /* big.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = big.c; sourceTree = "<group>"; };
-		FED0EDDB1C68C984001AB531 /* clint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clint.h; sourceTree = "<group>"; };
-		FED0EDDC1C68C984001AB531 /* DLLDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLDefines.h; sourceTree = "<group>"; };
-		FED0EDDD1C68C984001AB531 /* ecp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ecp.c; sourceTree = "<group>"; };
-		FED0EDDE1C68C984001AB531 /* ecp2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ecp2.c; sourceTree = "<group>"; };
-		FED0EDDF1C68C984001AB531 /* ff.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ff.c; sourceTree = "<group>"; };
-		FED0EDE01C68C984001AB531 /* fp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fp.c; sourceTree = "<group>"; };
-		FED0EDE11C68C984001AB531 /* fp12.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fp12.c; sourceTree = "<group>"; };
-		FED0EDE21C68C984001AB531 /* fp2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fp2.c; sourceTree = "<group>"; };
-		FED0EDE31C68C984001AB531 /* fp4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fp4.c; sourceTree = "<group>"; };
-		FED0EDE41C68C984001AB531 /* gcm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gcm.c; sourceTree = "<group>"; };
-		FED0EDE51C68C984001AB531 /* hash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hash.c; sourceTree = "<group>"; };
-		FED0EDE61C68C984001AB531 /* mpin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mpin.c; sourceTree = "<group>"; };
-		FED0EDE71C68C984001AB531 /* mpin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpin.h; sourceTree = "<group>"; };
-		FED0EDE81C68C984001AB531 /* oct.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = oct.c; sourceTree = "<group>"; };
-		FED0EDE91C68C984001AB531 /* pair.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pair.c; sourceTree = "<group>"; };
-		FED0EDEA1C68C984001AB531 /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
-		FED0EDEB1C68C984001AB531 /* rand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rand.c; sourceTree = "<group>"; };
-		FED0EDEC1C68C984001AB531 /* rom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rom.c; sourceTree = "<group>"; };
-		FED0EDED1C68C984001AB531 /* version.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = version.c; sourceTree = "<group>"; };
-		FED0EDEE1C68C984001AB531 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		FED0EDF11C68C984001AB531 /* elements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = elements.h; sourceTree = "<group>"; };
 		FED0EDF21C68C984001AB531 /* elements.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = elements.inl; sourceTree = "<group>"; };
 		FED0EDF31C68C984001AB531 /* reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reader.h; sourceTree = "<group>"; };
@@ -250,28 +268,40 @@
 		FED0EDD81C68C984001AB531 /* crypto */ = {
 			isa = PBXGroup;
 			children = (
-				FED0EDD91C68C984001AB531 /* aes.c */,
-				FED0EDDA1C68C984001AB531 /* big.c */,
-				FED0EDDB1C68C984001AB531 /* clint.h */,
-				FED0EDDC1C68C984001AB531 /* DLLDefines.h */,
-				FED0EDDD1C68C984001AB531 /* ecp.c */,
-				FED0EDDE1C68C984001AB531 /* ecp2.c */,
-				FED0EDDF1C68C984001AB531 /* ff.c */,
-				FED0EDE01C68C984001AB531 /* fp.c */,
-				FED0EDE11C68C984001AB531 /* fp12.c */,
-				FED0EDE21C68C984001AB531 /* fp2.c */,
-				FED0EDE31C68C984001AB531 /* fp4.c */,
-				FED0EDE41C68C984001AB531 /* gcm.c */,
-				FED0EDE51C68C984001AB531 /* hash.c */,
-				FED0EDE61C68C984001AB531 /* mpin.c */,
-				FED0EDE71C68C984001AB531 /* mpin.h */,
-				FED0EDE81C68C984001AB531 /* oct.c */,
-				FED0EDE91C68C984001AB531 /* pair.c */,
-				FED0EDEA1C68C984001AB531 /* platform.h */,
-				FED0EDEB1C68C984001AB531 /* rand.c */,
-				FED0EDEC1C68C984001AB531 /* rom.c */,
-				FED0EDED1C68C984001AB531 /* version.c */,
-				FED0EDEE1C68C984001AB531 /* version.h */,
+				3989B62D1F385A020072BB11 /* amcl.h */,
+				3989B62E1F385A020072BB11 /* arch.h */,
+				3989B62F1F385A020072BB11 /* config.h */,
+				3989B6301F385A020072BB11 /* ecdh.h */,
+				3989B6311F385A020072BB11 /* mpin.h */,
+				3989B6321F385A020072BB11 /* randapi.h */,
+				3989B6331F385A020072BB11 /* rsa.h */,
+				3989B6341F385A020072BB11 /* utils.h */,
+				3989B6351F385A020072BB11 /* version.h */,
+				3989B6361F385A020072BB11 /* wcc.h */,
+				3989B6371F385A020072BB11 /* x509.h */,
+				3989B5FF1F3859E20072BB11 /* aes.c */,
+				3989B6001F3859E20072BB11 /* big.c */,
+				3989B6011F3859E20072BB11 /* ecdh.c */,
+				3989B6021F3859E20072BB11 /* ecp.c */,
+				3989B6031F3859E20072BB11 /* ecp2.c */,
+				3989B6041F3859E20072BB11 /* ff.c */,
+				3989B6051F3859E20072BB11 /* fp.c */,
+				3989B6061F3859E20072BB11 /* fp2.c */,
+				3989B6071F3859E20072BB11 /* fp4.c */,
+				3989B6081F3859E20072BB11 /* fp12.c */,
+				3989B6091F3859E20072BB11 /* gcm.c */,
+				3989B60A1F3859E20072BB11 /* hash.c */,
+				3989B60B1F3859E20072BB11 /* mpin.c */,
+				3989B60C1F3859E20072BB11 /* oct.c */,
+				3989B60D1F3859E20072BB11 /* pair.c */,
+				3989B60E1F3859E20072BB11 /* rand.c */,
+				3989B60F1F3859E20072BB11 /* randapi.c */,
+				3989B6101F3859E20072BB11 /* rom.c */,
+				3989B6111F3859E20072BB11 /* rsa.c */,
+				3989B6121F3859E20072BB11 /* utils.c */,
+				3989B6131F3859E20072BB11 /* version.c */,
+				3989B6141F3859E20072BB11 /* wcc.c */,
+				3989B6151F3859E20072BB11 /* x509.c */,
 			);
 			name = crypto;
 			path = "../../mpin-sdk-core/src/crypto";
@@ -354,41 +384,47 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FED0EE0D1C68C984001AB531 /* fp4.c in Sources */,
+				3989B6381F385A7F0072BB11 /* aes.c in Sources */,
+				3989B6391F385A7F0072BB11 /* big.c in Sources */,
+				3989B63A1F385A7F0072BB11 /* ecdh.c in Sources */,
+				3989B63B1F385A7F0072BB11 /* ecp.c in Sources */,
+				3989B63C1F385A7F0072BB11 /* ecp2.c in Sources */,
+				3989B63D1F385A7F0072BB11 /* ff.c in Sources */,
+				3989B63E1F385A7F0072BB11 /* fp.c in Sources */,
+				3989B63F1F385A7F0072BB11 /* fp2.c in Sources */,
+				3989B6401F385A7F0072BB11 /* fp4.c in Sources */,
+				3989B6411F385A7F0072BB11 /* fp12.c in Sources */,
+				3989B6421F385A7F0072BB11 /* gcm.c in Sources */,
+				3989B6431F385A7F0072BB11 /* hash.c in Sources */,
+				3989B6441F385A7F0072BB11 /* mpin.c in Sources */,
+				3989B6451F385A7F0072BB11 /* oct.c in Sources */,
+				3989B6461F385A7F0072BB11 /* pair.c in Sources */,
+				3989B6471F385A7F0072BB11 /* rand.c in Sources */,
+				3989B6481F385A7F0072BB11 /* randapi.c in Sources */,
+				3989B6491F385A7F0072BB11 /* rom.c in Sources */,
+				3989B64A1F385A7F0072BB11 /* rsa.c in Sources */,
+				3989B64B1F385A7F0072BB11 /* utils.c in Sources */,
+				3989B64C1F385A7F0072BB11 /* version.c in Sources */,
+				3989B64D1F385A7F0072BB11 /* wcc.c in Sources */,
+				3989B64E1F385A7F0072BB11 /* x509.c in Sources */,
 				FED0EE1B1C68C9A3001AB531 /* CvString.cpp in Sources */,
 				FE991F0B1C5F66540014F23E /* Storage.mm in Sources */,
-				FED0EE101C68C984001AB531 /* mpin.c in Sources */,
-				FED0EE091C68C984001AB531 /* ff.c in Sources */,
-				FED0EE111C68C984001AB531 /* oct.c in Sources */,
 				FE991F0A1C5F66540014F23E /* OTP.m in Sources */,
 				FE71B7421E0AB960009A49C9 /* mfa_sdk.cpp in Sources */,
 				FE991F071C5F66540014F23E /* HTTPConnector.mm in Sources */,
-				FED0EE121C68C984001AB531 /* pair.c in Sources */,
 				FE7A4AD71D8D72D600E732B4 /* SessionDetails.m in Sources */,
-				FED0EE131C68C984001AB531 /* rand.c in Sources */,
-				FED0EE061C68C984001AB531 /* big.c in Sources */,
-				FED0EE141C68C984001AB531 /* rom.c in Sources */,
 				FED0EE1C1C68C9A3001AB531 /* CvXcode.cpp in Sources */,
-				FED0EE0A1C68C984001AB531 /* fp.c in Sources */,
-				FED0EE0F1C68C984001AB531 /* hash.c in Sources */,
-				FED0EE0B1C68C984001AB531 /* fp12.c in Sources */,
 				FE991F0C1C5F66540014F23E /* User.mm in Sources */,
 				FED0EE161C68C984001AB531 /* mpin_crypto_non_tee.cpp in Sources */,
-				FED0EE081C68C984001AB531 /* ecp2.c in Sources */,
 				FE6016451E0AE298002D8BDE /* mpin_sdk_base.cpp in Sources */,
-				FED0EE151C68C984001AB531 /* version.c in Sources */,
 				FED0EE171C68C984001AB531 /* mpin_sdk.cpp in Sources */,
 				FE55B5431DF839E600D3D69F /* ServiceDetails.m in Sources */,
 				FE991F091C5F66540014F23E /* MpinStatus.m in Sources */,
-				FED0EE071C68C984001AB531 /* ecp.c in Sources */,
 				FE991F061C5F66540014F23E /* Context.mm in Sources */,
 				FE71B73E1E0AA6A3009A49C9 /* MPinMFA.mm in Sources */,
-				FED0EE0E1C68C984001AB531 /* gcm.c in Sources */,
 				FEFB12771E5DBA79005746CD /* Expiration.m in Sources */,
-				FED0EE0C1C68C984001AB531 /* fp2.c in Sources */,
 				FED0EE181C68C984001AB531 /* utils.cpp in Sources */,
 				FE991F081C5F66540014F23E /* MPin.mm in Sources */,
-				FED0EE051C68C984001AB531 /* aes.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,11 +482,17 @@
 				DSTROOT = /tmp/MPinSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPinSDK/MPinSDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AMCL_VERSION_PATCH=1",
+					"AMCL_VERSION_MINOR=1",
+					"AMCL_VERSION_MAJOR=1",
+					OS,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/**";
+				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/** ../mpin-sdk-core/ext/milagro-crypto-c/include/**";
 			};
 			name = Dev;
 		};
@@ -505,11 +547,17 @@
 				DSTROOT = /tmp/MPinSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPinSDK/MPinSDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AMCL_VERSION_PATCH=1",
+					"AMCL_VERSION_MINOR=1",
+					"AMCL_VERSION_MAJOR=1",
+					OS,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/**";
+				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/** ../mpin-sdk-core/ext/milagro-crypto-c/include/**";
 			};
 			name = Stage;
 		};
@@ -557,10 +605,16 @@
 				DSTROOT = /tmp/MPinSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPinSDK/MPinSDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AMCL_VERSION_PATCH=1",
+					"AMCL_VERSION_MINOR=1",
+					"AMCL_VERSION_MAJOR=1",
+					OS,
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/**";
+				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/** ../mpin-sdk-core/ext/milagro-crypto-c/include/**";
 			};
 			name = QA;
 		};
@@ -608,10 +662,16 @@
 				DSTROOT = /tmp/MPinSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPinSDK/MPinSDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AMCL_VERSION_PATCH=1",
+					"AMCL_VERSION_MINOR=1",
+					"AMCL_VERSION_MAJOR=1",
+					OS,
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/**";
+				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/** ../mpin-sdk-core/ext/milagro-crypto-c/include/**";
 			};
 			name = Prod;
 		};
@@ -659,10 +719,16 @@
 				DSTROOT = /tmp/MPinSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPinSDK/MPinSDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"AMCL_VERSION_PATCH=1",
+					"AMCL_VERSION_MINOR=1",
+					"AMCL_VERSION_MAJOR=1",
+					OS,
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/**";
+				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/** ../mpin-sdk-core/ext/milagro-crypto-c/include/**";
 			};
 			name = AppStore;
 		};
@@ -754,11 +820,18 @@
 				DSTROOT = /tmp/MPinSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPinSDK/MPinSDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"AMCL_VERSION_PATCH=1",
+					"AMCL_VERSION_MINOR=1",
+					"AMCL_VERSION_MAJOR=1",
+					OS,
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/**";
+				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/** ../mpin-sdk-core/ext/milagro-crypto-c/include/**";
 			};
 			name = Debug;
 		};
@@ -769,10 +842,17 @@
 				DSTROOT = /tmp/MPinSDK.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPinSDK/MPinSDK-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"AMCL_VERSION_PATCH=1",
+					"AMCL_VERSION_MINOR=1",
+					OS,
+					"AMCL_VERSION_MAJOR=1",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/**";
+				USER_HEADER_SEARCH_PATHS = "../mpin-sdk-core/ext/cvshared/cpp/include/** ../mpin-sdk-core/ext/milagro-crypto-c/include/**";
 			};
 			name = "Automation-QA";
 		};
