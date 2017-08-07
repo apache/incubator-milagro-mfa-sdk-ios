@@ -47,4 +47,21 @@
     return userPtr;
 }
 
+- (NSString*) getBackend {
+    return [NSString stringWithUTF8String:userPtr->GetBackend().c_str()];
+}
+- (NSString*) GetCustomerId {
+    return [NSString stringWithUTF8String:userPtr->GetCustomerId().c_str()];
+}
+- (NSString*) GetAppId {
+    return [NSString stringWithUTF8String:userPtr->GetAppId().c_str()];
+}
+- (NSString*) GetMPinId  {
+    return [NSString stringWithUTF8String:userPtr->GetMPinId().c_str()];
+}
+
+- (Expiration*) GetRegistrationExpiration {
+    return [[Expiration alloc] initWith:userPtr->GetRegistrationExpiration().nowTimeSeconds expireTime:userPtr->GetRegistrationExpiration().expireTimeSeconds];
+}
+
 @end

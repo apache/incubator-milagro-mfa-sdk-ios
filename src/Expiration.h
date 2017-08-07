@@ -18,24 +18,11 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "Expiration.h"
 
-typedef NS_ENUM(NSInteger, UserState) {
-    INVALID = 0,
-    STARTED_REGISTRATION,
-    ACTIVATED,
-    REGISTERED,
-    BLOCKED
-};
+@interface Expiration : NSObject
+@property ( nonatomic, readonly ) int expireTimeSeconds;
+@property ( nonatomic, readonly ) int nowTimeSeconds;
 
-@protocol IUser <NSObject>
-
-- (NSString*) getIdentity;
-- (UserState) getState;
-- (NSString*) getBackend;
-- (NSString*) GetCustomerId;
-- (NSString*) GetAppId;
-- (NSString*) GetMPinId;
-- (Expiration*) GetRegistrationExpiration;
+-(id) initWith:(int) nowTime expireTime:(int) expTime;
 
 @end

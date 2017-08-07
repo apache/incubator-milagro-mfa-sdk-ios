@@ -30,6 +30,7 @@ class Storage: public IStorage {
 		virtual bool SetData(const String& data);
 		virtual bool GetData(String &data);
 		virtual const String& GetErrorMessage() const;
+        virtual bool ClearData();
 		virtual ~Storage();
         void Save();
 	private:
