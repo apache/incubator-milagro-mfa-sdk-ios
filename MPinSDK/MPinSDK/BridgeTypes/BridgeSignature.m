@@ -6,23 +6,23 @@
 //  Copyright © 2017 Certivox. All rights reserved.
 //
 
-#import "Signature.h"
+#import "BridgeSignature.h"
 
 @implementation BridgeSignature
 
--(id) initWith: (NSString *) strHash
-        mpinId: (NSString *) strMpinId
-       expTime: (NSString *) expTime
-      lSeconds: (NSString *) ttlSeconds
-       nowTime: (NSString *) nowTime
+-(id) initWith: (NSData *) strHash
+        mpinId: (NSData *) strMpinId
+          strU: (NSData *) strU
+          strV: (NSData *) strV
+  strPublicKey: (NSData *) strPublicKey
 {
     self = [super init];
     if (self) {
         _strHash        = strHash;
         _strMpinId      = strMpinId;
-        _strU           = expTime;
-        _strV           = ttlSeconds;
-        _strPublicKey   = nowTime;
+        _strU           = strU;
+        _strV           = strV;
+        _strPublicKey   = strPublicKey;
     }
     return self;
 }

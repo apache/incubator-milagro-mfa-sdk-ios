@@ -8,12 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Signature : NSObject
+@interface BridgeSignature : NSObject
 
-@property (nonatomic, strong) NSString *strHash;
-@property (nonatomic, strong) NSString *strMpinId;
-@property (nonatomic, strong) NSString *strU;
-@property (nonatomic, strong) NSString *strV;
-@property (nonatomic, strong) NSString *strPublicKey;
+-(id) initWith: (NSData *) strHash
+        mpinId: (NSData *) strMpinId
+          strU: (NSData *) strU
+          strV: (NSData *) strV
+  strPublicKey: (NSData *) strPublicKey;
+
+@property (nonatomic) NSData    *strHash;
+@property (nonatomic) NSData    *strMpinId;
+@property (nonatomic) NSData    *strU;
+@property (nonatomic) NSData    *strV;
+@property (nonatomic) NSData    *strPublicKey;
 
 @end

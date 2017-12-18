@@ -23,6 +23,7 @@
 #import "OTP.h"
 #import "SessionDetails.h"
 #import "ServiceDetails.h"
+#import "BridgeSignature.h"
 
 @interface MPinMFA : NSObject
 
@@ -41,8 +42,7 @@
 + (MpinStatus*) SetBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
 
 + (id<IUser>) MakeNewUser:(const NSString*)identity;
-+ (id<IUser>) MakeNewUser:(const NSString*)identity
-              deviceName:(const NSString*)devName;
++ (id<IUser>) MakeNewUser:(const NSString*)identity deviceName:(const NSString*)devName;
 + (Boolean) IsUserExisting:(NSString *) identity customerId:(NSString *) customerId appId:(NSString *) appId;
 + (void) DeleteUser:(const id<IUser>)user;
 + (void) ClearUsers;
@@ -52,7 +52,7 @@
 
 + (id<IUser>) getIUserById:(NSString *) userId;
 + (NSString *) GetClientParam:(const NSString *) key;
-/// TEMPORARY FIX
+
 + (NSString*) getRPSUrl;
 
 + (MpinStatus*) GetServiceDetails:(NSString *) url serviceDetails:(ServiceDetails **)sd;
@@ -65,10 +65,14 @@
 + (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode pmi:(NSString *) pmi;
 + (MpinStatus*) RestartRegistration:(const id<IUser>)user;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
-+ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;
++ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin0:(NSString *) pin0  pin1:(NSString *) pin1;
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
-+ (MpinStatus*) FinishAuthentication:(id<IUser>)user pin:(NSString *) pin accessCode:(NSString *)ac;
-+ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin accessCode:(NSString *)ac authzCode:(NSString **)authzCode;
++ (MpinStatus*) FinishAuthentication:(id<IUser>)user pin0:(NSString *) pin0 pin1:(NSString *) pin1 accessCode:(NSString *)ac;
++ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin pin1:(NSString *) pin1 accessCode:(NSString *)ac authzCode:(NSString **)authzCode;
+
++ ( BOOL ) VerifyDocument:(NSString *) strDoc hash:(NSData *)hash;
+
++ (MpinStatus*) Sign: (id<IUser>)user documentHash:(NSData *)hash pin0: (NSString *) pin0 pin1: (NSString *) pin1 epochTime: (double) epochTime result:(BridgeSignature **)result;
 
 + (NSMutableArray*) listUsers;
 
