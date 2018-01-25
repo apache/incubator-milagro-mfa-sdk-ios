@@ -19,15 +19,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, UserState) {
-    INVALID = 0,
-    STARTED_REGISTRATION,
-    ACTIVATED,
-    REGISTERED,
-    BLOCKED
-};
-
-@protocol IUser <NSObject>
-- (NSString*)getIdentity;
-- (UserState)getState;
+@interface ServiceDetails : NSObject
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * backendUrl;
+@property (nonatomic, strong) NSString * rpsPrefix;
+@property (nonatomic, strong) NSString * logoUrl;
+- (id) initWith:(NSString * ) name backendUrl:(NSString *) backendUrl rpsPrefix:(NSString *) rpsPrefix logoUrl:(NSString *) logoUrl;
 @end

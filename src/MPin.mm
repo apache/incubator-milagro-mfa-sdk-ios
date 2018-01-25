@@ -19,7 +19,6 @@
 
 #import "MPin.h"
 #import "mpin_sdk.h"
-// #import "def.h"
 #import "Context.h"
 #import <vector>
 #import "User.h"
@@ -54,26 +53,54 @@ typedef sdk_non_tee::Context Context;
 }
 
 + (void) initSDKWithHeaders:(NSDictionary *)dictHeaders{
-    
     if (isInitialized) return;
-
-    StringMap sm_CustomHeaders;
-    
-    for( id headerName in dictHeaders)
-    {
-        sm_CustomHeaders.Put( [headerName UTF8String], [dictHeaders[headerName] UTF8String] );
-    }
-    
     [lock lock];
-    mpin.Init(StringMap(), sdk_non_tee::Context::Instance(), sm_CustomHeaders);
+    mpin.Init(StringMap(), sdk_non_tee::Context::Instance());
     isInitialized = true;
     [lock unlock];
+    [MPin AddCustomHeaders:dictHeaders];
 }
 
 + (void) Destroy {
     [lock lock];
     mpin.Destroy();
     isInitialized = false;
+    [lock unlock];
+}
+
++ (void) ClearUsers {
+    [lock lock];
+    mpin.ClearUsers();
+    [lock unlock];
+}
+
++ (void) AddCustomHeaders:(NSDictionary *)dictHeaders {
+    if(dictHeaders == nil) return;
+    StringMap sm_CustomHeaders;
+    for( id headerName in dictHeaders)
+    {
+        sm_CustomHeaders.Put( [headerName UTF8String], [dictHeaders[headerName] UTF8String] );
+    }
+    [lock lock];
+    mpin.AddCustomHeaders(sm_CustomHeaders);
+    [lock unlock];
+}
+
++ (void) ClearCustomHeaders {
+    [lock lock];
+    mpin.ClearCustomHeaders();
+    [lock unlock];
+}
+
++ (void) AddTrustedDomain:(NSString *) domain {
+    [lock lock];
+    mpin.AddTrustedDomain( (domain == nil)?(""):([domain UTF8String]));
+    [lock unlock];
+}
+
++ (void) ClearTrustedDomains {
+    [lock lock];
+    mpin.ClearTrustedDomains();
     [lock unlock];
 }
 
@@ -124,12 +151,62 @@ typedef sdk_non_tee::Context Context;
     return [[User alloc] initWith:userPtr];
 }
 
-+ (MpinStatus*) StartRegistration:(const  id<IUser>) user {
-    return [MPin StartRegistration:user activateCode:@"" userData:@""];
++ (void) DeleteUser:(const id<IUser>) user {
+    [lock lock];
+    mpin.DeleteUser([((User *) user) getUserPtr]);
+    [lock unlock];
 }
 
-+ (MpinStatus*) RestartRegistration:(const id<IUser>) user {
-    return [MPin RestartRegistration:user userData:@""];
++ (Boolean) IsUserExisting:(NSString *) identity customerId:(NSString *) customerId appId:(NSString *) appId {
+    [lock lock];
+    Boolean b = mpin.IsUserExisting([identity UTF8String],
+                                    (customerId == nil)?(""):([customerId UTF8String]),
+                                    (appId == nil)?(""):([appId UTF8String])
+                                    );
+    [lock unlock];
+    return b;
+}
+
++ (Boolean) IsUserExisting:(NSString *) identity {
+   return [MPin IsUserExisting:identity customerId:@"" appId:@""];
+}
+
++ (Boolean) Logout:(const id<IUser>) user {
+    [lock lock];
+    Boolean b = mpin.Logout([((User *) user) getUserPtr]);
+    [lock unlock];
+    return b;
+}
+
++ (Boolean) CanLogout:(const id<IUser>) user {
+    [lock lock];
+    Boolean b = mpin.CanLogout([((User *) user) getUserPtr]);
+    [lock unlock];
+    return b;
+}
+
++(NSString*) GetClientParam:(const NSString *) key {
+    [lock lock];
+    String value = mpin.GetClientParam([key UTF8String]);
+    [lock unlock];
+    return [NSString stringWithUTF8String:value.c_str()];
+}
+
++ (id<IUser>) getIUserById:(NSString *) userId {
+    if( userId == nil ) return nil;
+    if ([@"" isEqualToString:userId]) return nil;
+    
+    NSArray * users = [MPin listUsers];
+    
+    for (User * user in users)
+        if ( [userId isEqualToString:[user getIdentity]] )
+            return user;
+    
+    return nil;
+}
+
++ (MpinStatus*) StartRegistration:(const  id<IUser>) user {
+    return [MPin StartRegistration:user activateCode:@"" userData:@""];
 }
 
 + (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode {
@@ -154,6 +231,9 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
++ (MpinStatus*) RestartRegistration:(const id<IUser>) user {
+    return [MPin RestartRegistration:user userData:@""];
+}
 
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user {
     return [MPin ConfirmRegistration:user pushNotificationIdentifier:nil];
@@ -177,13 +257,6 @@ typedef sdk_non_tee::Context Context;
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user {
     [lock lock];
     Status s = mpin.StartAuthentication([((User *) user) getUserPtr]);
-    [lock unlock];
-    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
-}
-
-+ (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode {
-    [lock lock];
-    Status s = mpin.StartAuthentication([((User *) user) getUserPtr], [accessCode UTF8String]);
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
@@ -231,42 +304,6 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (void) SetClientId:(NSString *) clientId {
-    [lock lock];
-    mpin.SetClientId([clientId UTF8String]);
-    [lock unlock];
-}
-
-+ (MpinStatus*) FinishAuthenticationMFA:(id<IUser>)user pin:(NSString *) pin authzCode:(NSString **) authzCode {
-    MPinSDK::String c_authzCode;
-    [lock lock];
-    Status s = mpin.FinishAuthenticationMFA( [((User *) user) getUserPtr], [pin UTF8String], c_authzCode);
-    [lock unlock];
-    *authzCode = [NSString stringWithUTF8String:c_authzCode.c_str()];
-    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
-}
-
-+ (Boolean) Logout:(const id<IUser>) user {
-    [lock lock];
-    Boolean b = mpin.Logout([((User *) user) getUserPtr]);
-    [lock unlock];
-    return b;
-}
-
-+ (Boolean) CanLogout:(const id<IUser>) user {
-    [lock lock];
-    Boolean b = mpin.CanLogout([((User *) user) getUserPtr]);
-    [lock unlock];
-    return b;
-}
-
-+(NSString*) GetClientParam:(const NSString *) key {
-    [lock lock];
-    String value = mpin.GetClientParam([key UTF8String]);
-    [lock unlock];
-    return [NSString stringWithUTF8String:value.c_str()];
-}
-
 +(NSMutableArray*) listUsers {
     NSMutableArray * users = [NSMutableArray array];
     std::vector<UserPtr> vUsers;
@@ -275,33 +312,6 @@ typedef sdk_non_tee::Context Context;
         [users addObject:[[User alloc] initWith:vUsers[i]]];
     }
     return users;
-}
-
-+ (SessionDetails*) GetSessionDetails:(NSString *) accessCode {
-    [lock lock];
-    MPinSDK::SessionDetails sd;
-    Status s = mpin.GetSessionDetails([accessCode UTF8String] , sd);
-    [lock unlock];
-    
-    if (s.GetStatusCode() != Status::Code::OK)
-        return nil;
-
-    return  [[SessionDetails alloc] initWith:[NSString stringWithUTF8String:sd.prerollId.c_str()]
-                                      appName:[NSString stringWithUTF8String:sd.appName.c_str()]
-                                   appIconUrl:[NSString stringWithUTF8String:sd.appIconUrl.c_str()]];
-}
-
-+ (id<IUser>) getIUserById:(NSString *) userId {
-    if( userId == nil ) return nil;
-    if ([@"" isEqualToString:userId]) return nil;
-    
-    NSArray * users = [MPin listUsers];
-    
-    for (User * user in users)
-        if ( [userId isEqualToString:[user getIdentity]] )
-            return user;
-    
-    return nil;
 }
 
 + (NSMutableArray*) listUsers:( NSString *) backendURL {
@@ -324,12 +334,6 @@ typedef sdk_non_tee::Context Context;
         [backends addObject:[NSString stringWithUTF8String:vBackends[i].c_str()]];
     }
     return backends;
-}
-
-+ (void) DeleteUser:(const id<IUser>) user {
-    [lock lock];
-    mpin.DeleteUser([((User *) user) getUserPtr]);
-    [lock unlock];
 }
 
 @end
