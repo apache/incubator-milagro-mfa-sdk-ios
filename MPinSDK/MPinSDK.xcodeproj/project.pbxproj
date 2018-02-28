@@ -29,6 +29,7 @@
 		9609CB921FDA885700528A50 /* ecp_BN254CX.c in Sources */ = {isa = PBXBuildFile; fileRef = 9609CB7F1FDA885600528A50 /* ecp_BN254CX.c */; };
 		9609CB981FDA9B1600528A50 /* MultiFactor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9609CB971FDA9B1600528A50 /* MultiFactor.m */; };
 		9609CB9A1FDAC5E500528A50 /* ServiceDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 9609CB991FDAC5E400528A50 /* ServiceDetails.m */; };
+		96F56F002046C0E6009AABC7 /* Expiration.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F56EFF2046C0E6009AABC7 /* Expiration.m */; };
 		FE49FF9C1A1A3C2D000030A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */; };
 		FE6016451E0AE298002D8BDE /* mpin_sdk_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE6016441E0AE298002D8BDE /* mpin_sdk_base.cpp */; };
 		FE71B73E1E0AA6A3009A49C9 /* MPinMFA.mm in Sources */ = {isa = PBXBuildFile; fileRef = FE71B73D1E0AA6A3009A49C9 /* MPinMFA.mm */; };
@@ -1690,6 +1691,8 @@
 		9609CB961FDA9B1600528A50 /* MultiFactor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiFactor.h; sourceTree = "<group>"; };
 		9609CB971FDA9B1600528A50 /* MultiFactor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiFactor.m; sourceTree = "<group>"; };
 		9609CB991FDAC5E400528A50 /* ServiceDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetails.m; sourceTree = "<group>"; };
+		96F56EFE2046C0E6009AABC7 /* Expiration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expiration.h; sourceTree = "<group>"; };
+		96F56EFF2046C0E6009AABC7 /* Expiration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expiration.m; sourceTree = "<group>"; };
 		FE49FF981A1A3C2D000030A4 /* libMPinSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPinSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FE49FF9F1A1A3C2D000030A4 /* MPinSDK-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPinSDK-Prefix.pch"; sourceTree = "<group>"; };
@@ -1757,6 +1760,8 @@
 		3988A7761FB1ED9A00C5715C /* BridgeTypes */ = {
 			isa = PBXGroup;
 			children = (
+				96F56EFE2046C0E6009AABC7 /* Expiration.h */,
+				96F56EFF2046C0E6009AABC7 /* Expiration.m */,
 				FE991EFE1C5F66540014F23E /* MpinStatus.h */,
 				FE991EFF1C5F66540014F23E /* MpinStatus.m */,
 				FE7A4AD51D8D72D600E732B4 /* SessionDetails.h */,
@@ -4670,6 +4675,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96F56F002046C0E6009AABC7 /* Expiration.m in Sources */,
 				9609CB9A1FDAC5E500528A50 /* ServiceDetails.m in Sources */,
 				FED0EE1B1C68C9A3001AB531 /* CvString.cpp in Sources */,
 				9609CB8E1FDA885700528A50 /* fp12_BN254CX.c in Sources */,

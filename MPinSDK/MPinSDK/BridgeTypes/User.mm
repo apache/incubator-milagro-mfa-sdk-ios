@@ -50,21 +50,29 @@
 - (NSString*) getBackend {
     return [NSString stringWithUTF8String:userPtr->GetBackend().c_str()];
 }
+
 - (NSString*) GetCustomerId {
     return [NSString stringWithUTF8String:userPtr->GetCustomerId().c_str()];
 }
+
 - (NSString*) GetAppId {
     return [NSString stringWithUTF8String:userPtr->GetAppId().c_str()];
 }
+
 - (NSString*) GetMPinId  {
     return [NSString stringWithUTF8String:userPtr->GetMPinId().c_str()];
 }
-- ( int ) getPINLength
-{
+
+- (Expiration*) GetRegistrationExpiration {
+    return [[Expiration alloc] initWith:userPtr->GetRegistrationExpiration().nowTimeSeconds expireTime:userPtr->GetRegistrationExpiration().expireTimeSeconds];
+}
+
+- ( int ) getPINLength {
     return userPtr->GetPinLength();
 }
 
 - (bool) canSign  {
     return userPtr->CanSign();
 }
+
 @end
