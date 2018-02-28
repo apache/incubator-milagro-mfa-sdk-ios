@@ -178,6 +178,11 @@ typedef MPinSDK::Signature      Signature;
     [lock unlock];
 }
 
++ (bool) isRegistrationTokenSet:(const id<IUser>)user
+{
+    return mpin.IsRegistrationTokenSet([((User *) user) getUserPtr]);
+}
+
 + (id<IUser>) getIUserById:(NSString *) userId {
     if( userId == nil ) return nil;
     if ([@"" isEqualToString:userId]) return nil;
