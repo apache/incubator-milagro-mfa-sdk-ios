@@ -59,6 +59,11 @@
 - (NSString*) GetMPinId  {
     return [NSString stringWithUTF8String:userPtr->GetMPinId().c_str()];
 }
+- ( int ) getPINLength
+{
+    return userPtr->GetPinLength();
+}
+
 - (bool) canSign  {
     return userPtr->CanSign();
 }

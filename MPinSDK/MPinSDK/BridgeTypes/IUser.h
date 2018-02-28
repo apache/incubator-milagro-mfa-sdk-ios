@@ -35,6 +35,7 @@ typedef NS_ENUM(NSInteger, UserState) {
 - (NSString*) getCustomerId;
 - (NSString*) getAppId;
 - (NSString*) getMPinId;
+- ( int ) getPINLength;
 - (BOOL) canSign;
 
 @end
