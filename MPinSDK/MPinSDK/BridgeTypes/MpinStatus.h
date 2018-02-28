@@ -56,8 +56,10 @@ typedef NS_ENUM(NSInteger, MPinStatus) {
     // Remote error - re-registration required because server master secret expired
     BAD_CLIENT_VERSION = 17,
     // Remote error - wrong client app version
-    UNTRUSTED_DOMAIN_ERROR = 18
+    UNTRUSTED_DOMAIN_ERROR = 18,
     // Local error - a request to a domain, that is not in the trusted list was attempted
+    REGISTRATION_EXPIRED = 19
+    // Remote error - regOTT expired
 };
 
 @interface MpinStatus : NSObject
