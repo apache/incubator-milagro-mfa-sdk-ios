@@ -88,9 +88,6 @@
         case UNTRUSTED_DOMAIN_ERROR:
             result = @"UNTRUSTED_DOMAIN_ERROR";
             break;
-        case REGISTRATION_EXPIRED:
-            result = @"REGISTRATION_EXPIRED";
-            break;
         default:
             break;
     }

@@ -22,6 +22,7 @@
 #import "Context.h"
 #import <vector>
 #import "User.h"
+#import "BridgeSignature.h"
 
 static MfaSDK mpin;
 static BOOL isInitialized = false;
@@ -30,9 +31,10 @@ static BOOL isInitialized = false;
 static NSString * rpsURL;
 static NSLock * lock = [[NSLock alloc] init];
 
-typedef MPinSDK::UserPtr UserPtr;
-typedef MPinSDK::Status Status;
-typedef sdk_non_tee::Context Context;
+typedef MPinSDK::UserPtr        UserPtr;
+typedef MPinSDK::Status         Status;
+typedef sdk_non_tee::Context    Context;
+typedef MPinSDK::Signature      Signature;
 
 @implementation MPinMFA
 
@@ -255,6 +257,14 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
++ (MpinStatus*) SetRegistrationToken:(const id<IUser>)user token:(NSString *) token
+{
+    [lock lock];
+    Status s = mpin.SetRegistrationToken([((User *) user) getUserPtr], [token UTF8String]);
+    [lock unlock];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
 + (MpinStatus*) RestartRegistration:(const id<IUser>)user {
     [lock lock];
     Status s = mpin.RestartRegistration([((User *) user) getUserPtr]);
@@ -269,9 +279,15 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin:(NSString *) pin {
+
++ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin0:(NSString *) pin0 pin1:(NSString *) pin1 {
     [lock lock];
-    Status s = mpin.FinishRegistration([((User *) user) getUserPtr], [pin UTF8String]);
+    MPinSDK::MultiFactor c_multiFactor = MPinSDK::MultiFactor([pin0 UTF8String]);
+    if ( pin1 != nil )
+    {
+        c_multiFactor.push_back([pin1 UTF8String]);
+    }
+    Status s = mpin.FinishRegistration([((User *) user) getUserPtr], c_multiFactor);
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
@@ -283,39 +299,29 @@ typedef sdk_non_tee::Context Context;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus *) FinishAuthentication:(id<IUser>) user pin:(NSString *) pin  accessCode:(NSString *) ac {
++ (MpinStatus *) FinishAuthentication:(id<IUser>) user pin0:(NSString *) pin0  pin1:(NSString *) pin1  accessCode:(NSString *) ac {
     [lock lock];
-    Status s = mpin.FinishAuthentication([((User *) user) getUserPtr], [pin UTF8String], [ac UTF8String]);
+    MPinSDK::MultiFactor c_multiFactor = MPinSDK::MultiFactor([pin0 UTF8String]);
+    if ( pin1 != nil )
+    {
+        c_multiFactor.push_back([pin1 UTF8String]);
+    }
+    Status s = mpin.FinishAuthentication([((User *) user) getUserPtr], c_multiFactor, [ac UTF8String]);
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus*)FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin accessCode:(NSString *)ac authzCode:(NSString **)authzCode {
++ (MpinStatus*)FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin0 pin1:(NSString *) pin1 accessCode:(NSString *)ac authzCode:(NSString **)authzCode {
     MPinSDK::String c_authzCode;
     [lock lock];
-    Status s = mpin.FinishAuthentication([((User *) user) getUserPtr], [pin UTF8String], [ac UTF8String] , c_authzCode);
+    MPinSDK::MultiFactor c_multiFactor = MPinSDK::MultiFactor([pin0 UTF8String]);
+    if ( pin1 != nil )
+    {
+        c_multiFactor.push_back([pin1 UTF8String]);
+    }
+    Status s = mpin.FinishAuthentication([((User *) user) getUserPtr], c_multiFactor, [ac UTF8String] , c_authzCode);
     [lock unlock];
     *authzCode = [NSString stringWithUTF8String:c_authzCode.c_str()];
-    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
-}
-
-+ (MpinStatus*) StartAuthenticationOTP:(const id<IUser>)user {
-    [lock lock];
-    Status s = mpin.StartAuthenticationOTP([((User *) user) getUserPtr]);
-    [lock unlock];
-    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
-}
-
-+ (MpinStatus*) FinishAuthenticationOTP:(const id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp {
-    MPinSDK::OTP c_otp;
-    [lock lock];
-    Status s = mpin.FinishAuthenticationOTP([((User *) user) getUserPtr], [pin UTF8String], c_otp);
-    [lock unlock];
-    *otp = [[OTP alloc] initWith:[[MpinStatus alloc] initWith:(MPinStatus)c_otp.status.GetStatusCode() errorMessage:[NSString stringWithUTF8String:c_otp.status.GetErrorMessage().c_str()]]
-                             otp:[NSString stringWithUTF8String:c_otp.otp.c_str()]
-                      expireTime:c_otp.expireTime
-                      ttlSeconds:c_otp.ttlSeconds
-                         nowTime:c_otp.nowTime];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
@@ -329,4 +335,102 @@ typedef sdk_non_tee::Context Context;
     return users;
 }
 
+
++ ( BOOL ) VerifyDocument:(NSString *) strDoc hash:(NSData *) hash
+{
+    const char *byteArray = (char  * )[hash bytes];
+    String cStrHash ( byteArray, hash.length );
+    BOOL bResult = mpin.VerifyDocumentHash([strDoc UTF8String], cStrHash);
+    return bResult;
+}
+
++ (MpinStatus*) Sign: (id<IUser>)user
+        documentHash:(NSData *)hash
+                pin0: (NSString *) pin0
+                pin1: (NSString *) pin1
+           epochTime: (double) epochTime
+          authZToken: (NSString *) authZToken
+              result: (BridgeSignature **)result
+{
+    
+    MPinSDK::MultiFactor c_multiFactor = MPinSDK::MultiFactor([pin0 UTF8String]);
+    if ( pin1 != nil )
+    {
+        c_multiFactor.push_back([pin1 UTF8String]);
+    }
+    MPinSDK::Signature   signResult;
+    
+    String cStrHash ( ((char  * )[hash bytes]), hash.length );
+    
+    Status status = mpin.Sign([((User *) user) getUserPtr], cStrHash, c_multiFactor, epochTime, [authZToken UTF8String], signResult);
+
+    NSMutableData *cHash = [[NSMutableData alloc] init];
+    NSMutableData *cU = [[NSMutableData alloc] init];
+    NSMutableData *cV = [[NSMutableData alloc] init];
+    NSMutableData *cPublicKey = [[NSMutableData alloc] init];
+    NSMutableData *cMPinID = [[NSMutableData alloc] init];
+    
+    [cHash appendBytes:signResult.hash.data() length:signResult.hash.length()];
+    [cU appendBytes:signResult.u.data() length:signResult.u.length()];
+    [cV appendBytes:signResult.v.data() length:signResult.v.length()];
+    [cPublicKey appendBytes:signResult.publicKey.data() length:signResult.publicKey.length()];
+    [cMPinID appendBytes:signResult.mpinId.data() length:signResult.mpinId.length()];
+    
+    NSString *strHash = [NSString stringWithCString:signResult.hash.c_str()
+                                           encoding:[NSString defaultCStringEncoding]];
+    NSLog(strHash);
+    
+    NSString *strU = [NSString stringWithCString:signResult.u.c_str()
+                                           encoding:[NSString defaultCStringEncoding]];
+    NSLog(strU);
+    
+    NSString *strV = [NSString stringWithCString:signResult.v.c_str()
+                                        encoding:[NSString defaultCStringEncoding]];
+    NSLog(strV);
+    
+    NSString *strPublicKey = [NSString stringWithCString:signResult.publicKey.c_str()
+                                                encoding:[NSString defaultCStringEncoding]];
+    NSLog(strPublicKey);
+    
+    *result = [[BridgeSignature alloc] initWith:cHash
+                                         mpinId:cMPinID
+                                           strU:cU
+                                           strV:cV
+                                   strPublicKey:cPublicKey
+               ];
+
+    return [[MpinStatus alloc] initWith:(MPinStatus)status.GetStatusCode() errorMessage:[NSString stringWithUTF8String:status.GetErrorMessage().c_str()]];
+}
+
+#pragma mark - DVS Second PIN -
+
++ (MpinStatus*) StartRegistrationDVS:(const id<IUser>)user
+                               token:(NSString *) token
+{
+    [lock lock];
+    Status s = mpin.StartRegistrationDVS([((User *) user) getUserPtr], [token UTF8String]);
+    [lock unlock];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
++ (MpinStatus*) FinishRegistrationDVS:(const id<IUser>)user
+                               pinDVS:(NSString *) pinDVS
+                                  nfc:(NSString *) nfc
+{
+    
+    [lock lock];
+    MPinSDK::MultiFactor c_multiFactor = MPinSDK::MultiFactor([pinDVS UTF8String]);
+    if ( nfc != nil )
+    {
+        c_multiFactor.push_back([nfc UTF8String]);
+    }
+    Status s = mpin.FinishRegistrationDVS([((User *) user) getUserPtr], c_multiFactor);
+    [lock unlock];
+    
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+
+}
+
 @end
+
+

@@ -19,10 +19,22 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Expiration : NSObject
-@property ( nonatomic, readonly ) int expireTimeSeconds;
-@property ( nonatomic, readonly ) int nowTimeSeconds;
+typedef NS_ENUM(NSInteger, UserState) {
+    INVALID = 0,
+    STARTED_REGISTRATION,
+    ACTIVATED,
+    REGISTERED,
+    BLOCKED
+};
 
--(id) initWith:(int) nowTime expireTime:(int) expTime;
+@protocol IUser <NSObject>
+
+- (NSString*) getIdentity;
+- (UserState) getState;
+- (NSString*) getBackend;
+- (NSString*) getCustomerId;
+- (NSString*) getAppId;
+- (NSString*) getMPinId;
+- (BOOL) canSign;
 
 @end
