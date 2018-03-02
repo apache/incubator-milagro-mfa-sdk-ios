@@ -85,7 +85,7 @@
 
 + ( BOOL ) VerifyDocument:(NSString *) strDoc hash:(NSData *)hash;
 
-+ (MpinStatus*) Sign: (id<IUser>)user documentHash:(NSData *)hash pin0: (NSString *) pin0 pin1: (NSString *) pin1 epochTime: (double) epochTime result:(BridgeSignature **)result;
++ (MpinStatus*) Sign: (id<IUser>)user documentHash:(NSData *)hash pin0: (NSString *) pin0 pin1: (NSString *) pin1 epochTime: (double) epochTime authZToken: (NSString *) authZToken result:(BridgeSignature **)result;
 
 + (NSMutableArray*) listUsers;
 
