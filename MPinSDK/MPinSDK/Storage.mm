@@ -37,6 +37,7 @@ void Storage::readStringFromFile(const String & aFileName, OUT String & aData) {
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *fileName = [NSString stringWithUTF8String:aFileName.c_str()];
     NSString *fileAtPath = [filePath stringByAppendingString:fileName];
+    NSLog(@"Storage Location: %@", filePath);
     if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) return;
     NSError * error = nil;
     NSString * readData = [NSString stringWithContentsOfFile:fileAtPath encoding:NSUTF8StringEncoding error:&error];
@@ -55,7 +56,6 @@ void Storage::writeStringToFile(const String & aFileName, const IN String & aDat
 }
     
 bool Storage:: ClearData() {
-    [[NSNotificationCenter defaultCenter] postNotificationName:CLEAR_USERS_NOTIFICATION object:nil];
     return SetData("");
 }
     

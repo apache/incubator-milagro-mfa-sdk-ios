@@ -17,11 +17,6 @@
  under the License.
  */
 
-#ifndef CLEAR_USERS_NOTIFICATION
-#define CLEAR_USERS_NOTIFICATION @"ClearAllUsers"
-#endif
-
-
 #ifndef DEF_H_
 #define DEF_H_
 
