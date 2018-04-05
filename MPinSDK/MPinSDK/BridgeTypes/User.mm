@@ -51,19 +51,19 @@
     return [NSString stringWithUTF8String:userPtr->GetBackend().c_str()];
 }
 
-- (NSString*) GetCustomerId {
+- (NSString*) getCustomerId {
     return [NSString stringWithUTF8String:userPtr->GetCustomerId().c_str()];
 }
 
-- (NSString*) GetAppId {
+- (NSString*) getAppId {
     return [NSString stringWithUTF8String:userPtr->GetAppId().c_str()];
 }
 
-- (NSString*) GetMPinId  {
+- (NSString*) getMPinId  {
     return [NSString stringWithUTF8String:userPtr->GetMPinId().c_str()];
 }
 
-- (Expiration*) GetRegistrationExpiration {
+- (Expiration*) getRegistrationExpiration {
     return [[Expiration alloc] initWith:userPtr->GetRegistrationExpiration().nowTimeSeconds expireTime:userPtr->GetRegistrationExpiration().expireTimeSeconds];
 }
 
