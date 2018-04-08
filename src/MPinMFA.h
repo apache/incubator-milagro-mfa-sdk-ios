@@ -21,8 +21,12 @@
 #import "IUser.h"
 #import "MpinStatus.h"
 #import "OTP.h"
+#import "SessionDetails.h"
+#import "ServiceDetails.h"
+#import "BridgeSignature.h"
+#import "MultiFactor.h"
 
-@interface MPin : NSObject
+@interface MPinMFA : NSObject
 
 + (void) initSDK;
 + (void) initSDKWithHeaders:(NSDictionary *)dictHeaders;
@@ -39,11 +43,11 @@
 + (MpinStatus*) SetBackend:(const NSString*)url rpsPrefix:(NSString*)rpsPrefix;
 
 + (id<IUser>) MakeNewUser:(const NSString*)identity;
-+ (id<IUser>) MakeNewUser:(const NSString*)identity
-              deviceName:(const NSString*)devName;
++ (id<IUser>) MakeNewUser:(const NSString*)identity deviceName:(const NSString*)devName;
 + (Boolean) IsUserExisting:(NSString *) identity customerId:(NSString *) customerId appId:(NSString *) appId;
-+ (Boolean) IsUserExisting:(NSString *) identity;
 + (void) DeleteUser:(const id<IUser>)user;
++ (bool) isRegistrationTokenSet:(const id<IUser>)user;
+
 + (void) ClearUsers;
 
 + (Boolean) Logout:(const id<IUser>)user;
@@ -51,30 +55,38 @@
 
 + (id<IUser>) getIUserById:(NSString *) userId;
 + (NSString *) GetClientParam:(const NSString *) key;
-/// TEMPORARY FIX
+
 + (NSString*) getRPSUrl;
 
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user;
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user userData:(NSString *) userData;
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode;
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode userData:(NSString *) userData;
-+ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin:(NSString *) pin;
++ (MpinStatus*) GetServiceDetails:(NSString *) url serviceDetails:(ServiceDetails **)sd;
++ (void) SetClientId:(NSString *) clientId;
++ (SessionDetails*) GetSessionDetails:(NSString *) accessCode;
++ (MpinStatus*) AbortSession:(NSString *) accessCode;
 
++ (MpinStatus*) GetAccessCode:(NSString *) authzUrl accessCode:(NSString **)ac;
+
++ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode pmi:(NSString *) pmi;
 + (MpinStatus*) RestartRegistration:(const id<IUser>)user;
-+ (MpinStatus*) RestartRegistration:(const id<IUser>)user userData:(NSString *) userData;
-
++ (MpinStatus*) SetRegistrationToken:(const id<IUser>)user token:(NSString *) token;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user  pushNotificationIdentifier:(NSString *) pushNotificationIdentifier;
++ (MpinStatus*) FinishRegistration:(const id<IUser>)user pin0:(NSString *) pin0  pin1:(NSString *) pin1;
++ (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
++ (MpinStatus*) FinishAuthentication:(id<IUser>)user pin0:(NSString *) pin0 pin1:(NSString *) pin1 accessCode:(NSString *)ac;
++ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin pin1:(NSString *) pin1 accessCode:(NSString *)ac authzCode:(NSString **)authzCode;
 
-+ (MpinStatus*) StartAuthentication:(const id<IUser>)user;
-+ (MpinStatus*) CheckAccessNumber:(NSString *)an;
-+ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin;
-+ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin authResultData:(NSString **)authResultData;
-+ (MpinStatus*) FinishAuthenticationOTP:(id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp;
-+ (MpinStatus*) FinishAuthenticationAN:(id<IUser>)user pin:(NSString *) pin accessNumber:(NSString *)an;
++ (MpinStatus*) StartRegistrationDVS:(const id<IUser>)user
+                               token:(NSString *) token;
+
++ (MpinStatus*) FinishRegistrationDVS:(const id<IUser>)user
+                               pinDVS:(NSString *) pinDVS
+                                  nfc:(NSString *) nfc;
+
+
++ ( BOOL ) VerifyDocument:(NSString *) strDoc hash:(NSData *)hash;
+
++ (MpinStatus*) Sign: (id<IUser>)user documentHash:(NSData *)hash pin0: (NSString *) pin0 pin1: (NSString *) pin1 epochTime: (double) epochTime authZToken: (NSString *) authZToken result:(BridgeSignature **)result;
 
 + (NSMutableArray*) listUsers;
-+ (NSMutableArray*) listUsers:( NSString *) backendURL;
-+ (NSMutableArray*) listBackends;
 
 @end

@@ -37,6 +37,7 @@ void Storage::readStringFromFile(const String & aFileName, OUT String & aData) {
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *fileName = [NSString stringWithUTF8String:aFileName.c_str()];
     NSString *fileAtPath = [filePath stringByAppendingString:fileName];
+    NSLog(@"Storage Location: %@", filePath);
     if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) return;
     NSError * error = nil;
     NSString * readData = [NSString stringWithContentsOfFile:fileAtPath encoding:NSUTF8StringEncoding error:&error];
@@ -53,7 +54,11 @@ void Storage::writeStringToFile(const String & aFileName, const IN String & aDat
     }
     [[[NSString stringWithUTF8String:aData.c_str()] dataUsingEncoding:NSUTF8StringEncoding] writeToFile:fileAtPath atomically:NO];
 }
-
+    
+bool Storage:: ClearData() {
+    return SetData("");
+}
+    
 bool Storage::SetData(const String& data) {
     store = data;
     Save();
@@ -68,10 +73,10 @@ bool Storage::GetData(String &data) {
 
 const String& Storage::GetErrorMessage() const { return m_errorMessage; }
 
-    void Storage::Save() {
-        if(m_isMpinType)  writeStringToFile(SECURE_STORE, secureInMemoryStore);
-        else writeStringToFile(STORE, inMemoryStore);
-    }
+void Storage::Save() {
+    if(m_isMpinType)  writeStringToFile(SECURE_STORE, secureInMemoryStore);
+    else writeStringToFile(STORE, inMemoryStore);
+}
     
 Storage::~Storage() {
     Save();

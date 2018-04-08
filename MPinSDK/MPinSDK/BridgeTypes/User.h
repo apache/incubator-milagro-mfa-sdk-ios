@@ -25,8 +25,8 @@ typedef MPinSDK::UserPtr UserPtr;
 
 @interface User : NSObject <IUser>
 
-@property(nonatomic, strong) NSString * identity;
-@property(nonatomic,readwrite) UserState userState;
+@property (nonatomic, strong) NSString * identity;
+@property (nonatomic,readwrite) UserState userState;
 
 -(id) initWith:(UserPtr)usrPtr;
 -(UserPtr) getUserPtr;

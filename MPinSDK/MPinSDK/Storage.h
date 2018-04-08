@@ -17,34 +17,31 @@
  under the License.
  */
 
-#import "User.h"
+#ifndef STORAGE_H_
+#define STORAGE_H_
 
-@interface User() {
-    UserPtr userPtr;
-}
+#include "def.h"
 
-@end
+namespace store {
 
-@implementation User
+class Storage: public IStorage {
+	public:
+		explicit Storage(bool isMpinType);
+		virtual bool SetData(const String& data);
+		virtual bool GetData(String &data);
+		virtual const String& GetErrorMessage() const;
+        virtual bool ClearData();
+		virtual ~Storage();
+        void Save();
+	private:
+		Storage(const Storage &);
+        Storage();
+        void readStringFromFile(const String &, OUT String &);
+        void writeStringToFile(const String &, const IN String &);
+        String m_errorMessage;
+        String& store;
+        bool m_isMpinType;
+};
 
-- (id) initWith:(UserPtr) usrPtr {
-    self = [super init];
-    if (self) {
-        userPtr = usrPtr;
-    }
-    return self;
-}
-
--(NSString *) getIdentity {
-    return [NSString stringWithUTF8String:userPtr->GetId().c_str()];
-}
-
--(UserState) getState {
-    return (UserState)userPtr->GetState();
-}
-
--(UserPtr) getUserPtr {
-    return userPtr;
-}
-
-@end
+} /* namespace store */
+#endif /* STORAGE_H_ */
