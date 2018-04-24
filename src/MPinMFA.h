@@ -87,6 +87,9 @@
 
 + (MpinStatus*) Sign: (id<IUser>)user documentHash:(NSData *)hash pin0: (NSString *) pin0 pin1: (NSString *) pin1 epochTime: (double) epochTime authZToken: (NSString *) authZToken result:(BridgeSignature **)result;
 
++ (MpinStatus*) StartAuthenticationOTP:(const id<IUser>)user;
++ (MpinStatus*) FinishAuthenticationOTP:(const id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp;
+
 + (NSMutableArray*) listUsers;
 
 @end

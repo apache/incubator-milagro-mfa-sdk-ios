@@ -436,6 +436,26 @@ typedef MPinSDK::Signature      Signature;
 
 }
 
++ (MpinStatus*) StartAuthenticationOTP:(const id<IUser>)user {
+    [lock lock];
+    Status s = mpin.StartAuthenticationOTP([((User *) user) getUserPtr]);
+    [lock unlock];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
++ (MpinStatus*) FinishAuthenticationOTP:(const id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp {
+    MPinSDK::OTP c_otp;
+    [lock lock];
+    Status s = mpin.FinishAuthenticationOTP([((User *) user) getUserPtr], [pin UTF8String], c_otp);
+    [lock unlock];
+    *otp = [[OTP alloc] initWith:[[MpinStatus alloc] initWith:(MPinStatus)c_otp.status.GetStatusCode() errorMessage:[NSString stringWithUTF8String:c_otp.status.GetErrorMessage().c_str()]]
+                             otp:[NSString stringWithUTF8String:c_otp.otp.c_str()]
+                      expireTime:c_otp.expireTime
+                      ttlSeconds:c_otp.ttlSeconds
+                         nowTime:c_otp.nowTime];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
 @end
 
 
