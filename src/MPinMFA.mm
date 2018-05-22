@@ -22,7 +22,6 @@
 #import "Context.h"
 #import <vector>
 #import "User.h"
-#import "BridgeSignature.h"
 
 static MfaSDK mpin;
 static BOOL isInitialized = false;
@@ -453,6 +452,40 @@ typedef MPinSDK::Signature      Signature;
                       expireTime:c_otp.expireTime
                       ttlSeconds:c_otp.ttlSeconds
                          nowTime:c_otp.nowTime];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
+#pragma mark - RegCode -
+
++ (MpinStatus*) StartRegistration:(const id<IUser>)user accessCode:(NSString *) accessCode regCode:(NSString *) regCode pmi:(NSString *) pmi{
+    [lock lock];
+    Status s = mpin.StartRegistration([((User *) user) getUserPtr], [accessCode UTF8String], [pmi UTF8String], [regCode UTF8String]);
+    [lock unlock];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
++ (MpinStatus*) StartAuthenticationRegCode:(const id<IUser>)user{
+    [lock lock];
+    Status s = mpin.StartAuthenticationRegCode([((User *) user) getUserPtr]);
+    [lock unlock];
+    return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
+}
+
++ (MpinStatus*)FinishAuthenticationRegCode:(const id<IUser>)user pin:(NSString *) pin0 pin1:(NSString *) pin1 regCode:(RegCode **)regCode{
+    [lock lock];
+    MPinSDK::RegCode     c_regCode = MPinSDK::RegCode();
+    MPinSDK::MultiFactor c_multiFactor = MPinSDK::MultiFactor([pin0 UTF8String]);
+    if ( pin1 != nil )
+    {
+        c_multiFactor.push_back([pin1 UTF8String]);
+    }
+    Status s = mpin.FinishAuthenticationRegCode([((User *) user) getUserPtr], c_multiFactor, c_regCode);
+    *regCode = [[RegCode alloc] initWith:[[MpinStatus alloc] initWith:(MPinStatus)c_regCode.status.GetStatusCode() errorMessage:[NSString stringWithUTF8String:c_regCode.status.GetErrorMessage().c_str()]]
+                                        otp:[NSString stringWithUTF8String:c_regCode.otp.c_str()]
+                                 expireTime:c_regCode.expireTime
+                                 ttlSeconds:c_regCode.ttlSeconds
+                                    nowTime:c_regCode.nowTime];
+    [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 

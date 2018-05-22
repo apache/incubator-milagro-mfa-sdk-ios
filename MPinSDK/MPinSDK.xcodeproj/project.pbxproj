@@ -29,6 +29,7 @@
 		9609CB921FDA885700528A50 /* ecp_BN254CX.c in Sources */ = {isa = PBXBuildFile; fileRef = 9609CB7F1FDA885600528A50 /* ecp_BN254CX.c */; };
 		9609CB981FDA9B1600528A50 /* MultiFactor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9609CB971FDA9B1600528A50 /* MultiFactor.m */; };
 		9609CB9A1FDAC5E500528A50 /* ServiceDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 9609CB991FDAC5E400528A50 /* ServiceDetails.m */; };
+		968EADF320B40678001094AD /* RegCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 968EADF220B40678001094AD /* RegCode.m */; };
 		96F56F002046C0E6009AABC7 /* Expiration.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F56EFF2046C0E6009AABC7 /* Expiration.m */; };
 		FE49FF9C1A1A3C2D000030A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE49FF9B1A1A3C2D000030A4 /* Foundation.framework */; };
 		FE6016451E0AE298002D8BDE /* mpin_sdk_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FE6016441E0AE298002D8BDE /* mpin_sdk_base.cpp */; };
@@ -1691,6 +1692,8 @@
 		9609CB961FDA9B1600528A50 /* MultiFactor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultiFactor.h; sourceTree = "<group>"; };
 		9609CB971FDA9B1600528A50 /* MultiFactor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultiFactor.m; sourceTree = "<group>"; };
 		9609CB991FDAC5E400528A50 /* ServiceDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceDetails.m; sourceTree = "<group>"; };
+		968EADF120B40678001094AD /* RegCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegCode.h; sourceTree = "<group>"; };
+		968EADF220B40678001094AD /* RegCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegCode.m; sourceTree = "<group>"; };
 		96F56EFE2046C0E6009AABC7 /* Expiration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Expiration.h; sourceTree = "<group>"; };
 		96F56EFF2046C0E6009AABC7 /* Expiration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Expiration.m; sourceTree = "<group>"; };
 		FE49FF981A1A3C2D000030A4 /* libMPinSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMPinSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1777,6 +1780,8 @@
 				3988A7781FB1EE6400C5715C /* BridgeSignature.m */,
 				9609CB961FDA9B1600528A50 /* MultiFactor.h */,
 				9609CB971FDA9B1600528A50 /* MultiFactor.m */,
+				968EADF120B40678001094AD /* RegCode.h */,
+				968EADF220B40678001094AD /* RegCode.m */,
 			);
 			path = BridgeTypes;
 			sourceTree = "<group>";
@@ -4650,7 +4655,7 @@
 		FE49FF901A1A3C2D000030A4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Certivox;
 			};
 			buildConfigurationList = FE49FF931A1A3C2D000030A4 /* Build configuration list for PBXProject "MPinSDK" */;
@@ -4701,6 +4706,7 @@
 				FE6016451E0AE298002D8BDE /* mpin_sdk_base.cpp in Sources */,
 				9609CB901FDA885700528A50 /* big_256_28.c in Sources */,
 				9609CB851FDA885700528A50 /* fp4_BN254CX.c in Sources */,
+				968EADF320B40678001094AD /* RegCode.m in Sources */,
 				FED0EE171C68C984001AB531 /* mpin_sdk.cpp in Sources */,
 				9609CB8B1FDA885700528A50 /* fp2_BN254CX.c in Sources */,
 				9609CB831FDA885700528A50 /* pbc_support.c in Sources */,
@@ -4723,7 +4729,7 @@
 		3917A2CE1E277C730005CC4F /* Dev */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -4785,7 +4791,7 @@
 		3917A2D01E277C830005CC4F /* Stage */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -4847,7 +4853,7 @@
 		96DA33FF1ACD671A00B2CAAB /* QA */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -4902,7 +4908,7 @@
 		96DA34051ACD672A00B2CAAB /* Prod */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -4957,7 +4963,7 @@
 		96DA34081ACD673300B2CAAB /* AppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -5011,7 +5017,7 @@
 		FE49FFB91A1A3C2D000030A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -5056,7 +5062,7 @@
 		FE49FFBA1A1A3C2D000030A4 /* Automation-QA */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
