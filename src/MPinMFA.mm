@@ -471,7 +471,7 @@ typedef MPinSDK::Signature      Signature;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus*)FinishAuthenticationRegCode:(const id<IUser>)user pin:(NSString *) pin0 pin1:(NSString *) pin1 regCode:(SDKRegCode **)regCode{
++ (MpinStatus*)FinishAuthenticationRegCode:(const id<IUser>)user pin:(NSString *) pin0 pin1:(NSString *) pin1 regCode:(RegCode **)regCode{
     [lock lock];
     MPinSDK::RegCode     c_regCode = MPinSDK::RegCode();
     MPinSDK::MultiFactor c_multiFactor = MPinSDK::MultiFactor([pin0 UTF8String]);
@@ -480,7 +480,7 @@ typedef MPinSDK::Signature      Signature;
         c_multiFactor.push_back([pin1 UTF8String]);
     }
     Status s = mpin.FinishAuthenticationRegCode([((User *) user) getUserPtr], c_multiFactor, c_regCode);
-    *regCode = [[SDKRegCode alloc] initWith:[[MpinStatus alloc] initWith:(MPinStatus)c_regCode.status.GetStatusCode() errorMessage:[NSString stringWithUTF8String:c_regCode.status.GetErrorMessage().c_str()]]
+    *regCode = [[RegCode alloc] initWith:[[MpinStatus alloc] initWith:(MPinStatus)c_regCode.status.GetStatusCode() errorMessage:[NSString stringWithUTF8String:c_regCode.status.GetErrorMessage().c_str()]]
                                         otp:[NSString stringWithUTF8String:c_regCode.otp.c_str()]
                                  expireTime:c_regCode.expireTime
                                  ttlSeconds:c_regCode.ttlSeconds

@@ -1,13 +1,14 @@
 //
-//  SDKRegCode.m
+//  RegCode.h
 //  MPinSDK
 //
 //  Created by Tihomir Ganev on 22.05.18.
 //  Copyright © 2018 Certivox. All rights reserved.
 //
 
-#import "SDKRegCode.h"
+#import <Foundation/Foundation.h>
+#import "OTP.h"
 
-@implementation SDKRegCode
+@interface RegCode : OTP
 
 @end

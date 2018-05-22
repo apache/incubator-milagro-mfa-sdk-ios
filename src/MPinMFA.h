@@ -25,7 +25,7 @@
 #import "ServiceDetails.h"
 #import "BridgeSignature.h"
 #import "MultiFactor.h"
-#import "SDKRegCode.h"
+#import "RegCode.h"
 
 @interface MPinMFA : NSObject
 
@@ -98,7 +98,7 @@
 + (MpinStatus*) FinishAuthenticationRegCode:(const id<IUser>)user
                                         pin:(NSString *) pin0
                                        pin1:(NSString *) pin1
-                                    regCode:(SDKRegCode **)regCode;
+                                    regCode:(RegCode **)regCode;
 
 + (MpinStatus*) StartRegistrationDVS:(const id<IUser>)user token:(NSString *) token;
 
