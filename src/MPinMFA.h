@@ -25,6 +25,7 @@
 #import "ServiceDetails.h"
 #import "BridgeSignature.h"
 #import "MultiFactor.h"
+#import "SDKRegCode.h"
 
 @interface MPinMFA : NSObject
 
@@ -65,31 +66,59 @@
 
 + (MpinStatus*) GetAccessCode:(NSString *) authzUrl accessCode:(NSString **)ac;
 
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode pmi:(NSString *) pmi;
 + (MpinStatus*) RestartRegistration:(const id<IUser>)user;
 + (MpinStatus*) SetRegistrationToken:(const id<IUser>)user token:(NSString *) token;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
-+ (MpinStatus*) ConfirmRegistration:(const id<IUser>)user  pushNotificationIdentifier:(NSString *) pushNotificationIdentifier;
++ (MpinStatus*) ConfirmRegistration:(const id<IUser>)user pushNotificationIdentifier:(NSString *) pushNotificationIdentifier;
 + (MpinStatus*) FinishRegistration:(const id<IUser>)user pin0:(NSString *) pin0  pin1:(NSString *) pin1;
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
-+ (MpinStatus*) FinishAuthentication:(id<IUser>)user pin0:(NSString *) pin0 pin1:(NSString *) pin1 accessCode:(NSString *)ac;
-+ (MpinStatus*) FinishAuthentication:(const id<IUser>)user pin:(NSString *) pin pin1:(NSString *) pin1 accessCode:(NSString *)ac authzCode:(NSString **)authzCode;
 
-+ (MpinStatus*) StartRegistrationDVS:(const id<IUser>)user
-                               token:(NSString *) token;
++ (MpinStatus*) FinishAuthentication:(id<IUser>)user
+                                pin0:(NSString *) pin0
+                                pin1:(NSString *) pin1
+                          accessCode:(NSString *)ac;
+
++ (MpinStatus*) FinishAuthentication:(const id<IUser>)user
+                                 pin:(NSString *) pin
+                                pin1:(NSString *) pin1
+                          accessCode:(NSString *)ac
+                           authzCode:(NSString **)authzCode;
+
++ (MpinStatus*) StartRegistration:(const id<IUser>)user
+                       accessCode:(NSString *) accessCode
+                              pmi:(NSString *) pmi;
+
++ (MpinStatus*) StartRegistration:(const id<IUser>)user
+                       accessCode:(NSString *) accessCode
+                          regCode:(NSString *) regCode
+                              pmi:(NSString *) pmi;
+
++ (MpinStatus*) StartAuthenticationRegCode:(const id<IUser>)user;
+
++ (MpinStatus*) FinishAuthenticationRegCode:(const id<IUser>)user
+                                        pin:(NSString *) pin0
+                                       pin1:(NSString *) pin1
+                                    regCode:(SDKRegCode **)regCode;
+
++ (MpinStatus*) StartRegistrationDVS:(const id<IUser>)user token:(NSString *) token;
 
 + (MpinStatus*) FinishRegistrationDVS:(const id<IUser>)user
                                pinDVS:(NSString *) pinDVS
                                   nfc:(NSString *) nfc;
 
++ ( BOOL ) VerifyDocument:(NSString *) strDoc
+                     hash:(NSData *)hash;
 
-+ ( BOOL ) VerifyDocument:(NSString *) strDoc hash:(NSData *)hash;
-
-+ (MpinStatus*) Sign: (id<IUser>)user documentHash:(NSData *)hash pin0: (NSString *) pin0 pin1: (NSString *) pin1 epochTime: (double) epochTime authZToken: (NSString *) authZToken result:(BridgeSignature **)result;
++ (MpinStatus*) Sign: (id<IUser>)user
+        documentHash:(NSData *)hash
+                pin0: (NSString *) pin0
+                pin1: (NSString *) pin1
+           epochTime: (double) epochTime
+          authZToken: (NSString *) authZToken
+              result:(BridgeSignature **)result;
 
 + (MpinStatus*) StartAuthenticationOTP:(const id<IUser>)user;
 + (MpinStatus*) FinishAuthenticationOTP:(const id<IUser>)user pin:(NSString *) pin otp:(OTP**)otp;
-
 + (NSMutableArray*) listUsers;
 
 @end
