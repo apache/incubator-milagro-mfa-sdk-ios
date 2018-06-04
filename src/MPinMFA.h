@@ -69,7 +69,6 @@
 + (MpinStatus*) RestartRegistration:(const id<IUser>)user;
 + (MpinStatus*) SetRegistrationToken:(const id<IUser>)user token:(NSString *) token;
 + (MpinStatus*) ConfirmRegistration:(const id<IUser>)user;
-+ (MpinStatus*) ConfirmRegistration:(const id<IUser>)user pushNotificationIdentifier:(NSString *) pushNotificationIdentifier;
 + (MpinStatus*) FinishRegistration:(const id<IUser>)user pin0:(NSString *) pin0  pin1:(NSString *) pin1;
 + (MpinStatus*) StartAuthentication:(const id<IUser>)user accessCode:(NSString *) accessCode;
 

@@ -41,7 +41,6 @@
 + (id<IUser>) MakeNewUser:(const NSString*)identity;
 + (id<IUser>) MakeNewUser:(const NSString*)identity
               deviceName:(const NSString*)devName;
-+ (Boolean) IsUserExisting:(NSString *) identity customerId:(NSString *) customerId appId:(NSString *) appId;
 + (Boolean) IsUserExisting:(NSString *) identity;
 + (void) DeleteUser:(const id<IUser>)user;
 + (void) ClearUsers;
