@@ -254,9 +254,9 @@ typedef MPinSDK::Signature      Signature;
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }
 
-+ (MpinStatus*) StartRegistration:(const id<IUser>)user activateCode:(NSString *) activateCode pmi:(NSString *) pmi {
++ (MpinStatus*) StartRegistration:(const id<IUser>)user accessCode:(NSString *) accessCode pmi:(NSString *) pmi {
     [lock lock];
-    Status s = mpin.StartRegistration([((User *) user) getUserPtr], [activateCode UTF8String], [pmi UTF8String]);
+    Status s = mpin.StartRegistration([((User *) user) getUserPtr], [accessCode UTF8String], [pmi UTF8String]);
     [lock unlock];
     return [[MpinStatus alloc] initWith:(MPinStatus)s.GetStatusCode() errorMessage:[NSString stringWithUTF8String:s.GetErrorMessage().c_str()]];
 }

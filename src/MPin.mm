@@ -158,7 +158,7 @@ typedef sdk_non_tee::Context Context;
 }
 
 + (Boolean) IsUserExisting:(NSString *) identity {
-   return [MPin IsUserExisting:identity customerId:@"" appId:@""];
+    return mpin.IsUserExisting([identity UTF8String]);
 }
 
 + (Boolean) Logout:(const id<IUser>) user {
