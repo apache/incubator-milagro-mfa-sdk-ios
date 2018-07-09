@@ -235,6 +235,7 @@ typedef MPinSDK::Signature      Signature;
                                   customerId:[NSString stringWithUTF8String:sd.customerId.c_str()]
                                 customerName:[NSString stringWithUTF8String:sd.customerName.c_str()]
                              customerIconUrl:[NSString stringWithUTF8String:sd.customerIconUrl.c_str()]
+                                registerOnly:sd.registerOnly
              ];
 }
 

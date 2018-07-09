@@ -26,12 +26,14 @@
 @property (nonatomic, retain) NSString * customerId;
 @property (nonatomic, retain) NSString * customerName;
 @property (nonatomic, retain) NSString * customerIconUrl;
+@property (nonatomic)         BOOL       registerOnly;
 
 - (id) initWith:(NSString * ) prerollId
         appName:(NSString *) appName
      appIconUrl:(NSString *) appIconUrl
      customerId:(NSString *) customerId
    customerName:(NSString *) customerName
-customerIconUrl:(NSString *) customerIconUrl;
+customerIconUrl:(NSString *) customerIconUrl
+   registerOnly:(BOOL) registerOnly;
 
 @end

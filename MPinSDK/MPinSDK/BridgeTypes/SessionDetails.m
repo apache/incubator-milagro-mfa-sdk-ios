@@ -26,7 +26,9 @@
      appIconUrl:(NSString *) appIconUrl
      customerId:(NSString *) customerId
    customerName:(NSString *) customerName
-customerIconUrl:(NSString *) customerIconUrl    {
+customerIconUrl:(NSString *) customerIconUrl
+   registerOnly:(BOOL)registerOnly
+{
 
     self = [super init];
     if (self) {
@@ -36,6 +38,7 @@ customerIconUrl:(NSString *) customerIconUrl    {
         self.customerId = customerId;
         self.customerName = customerName;
         self.customerIconUrl = customerIconUrl;
+        self.registerOnly = registerOnly;
     }
     return self;
 }
