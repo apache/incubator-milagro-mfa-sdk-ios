@@ -18,16 +18,16 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "mpin_sdk.h"
+#import "IUser.h"
 
-typedef NS_ENUM(NSInteger, UserState) {
-    INVALID = 0,
-    STARTED_REGISTRATION,
-    ACTIVATED,
-    REGISTERED,
-    BLOCKED
-};
+typedef MPinSDK::UserPtr UserPtr;
 
-@protocol IUser <NSObject>
-- (NSString*)getIdentity;
-- (UserState)getState;
+@interface User : NSObject <IUser>
+
+@property (nonatomic, strong) NSString * identity;
+@property (nonatomic,readwrite) UserState userState;
+
+-(id) initWith:(UserPtr)usrPtr;
+-(UserPtr) getUserPtr;
 @end
